@@ -1,0 +1,15 @@
+[extensions]
+color =
+pager =
+
+[color]
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
+
+[pager]
+pager = less -FRX
+#attend =
