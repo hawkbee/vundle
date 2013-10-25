@@ -6,7 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " let Vundle manage Vundle
-" required!
+" required! 
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
@@ -17,7 +17,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'ervandew/supertab'
 Bundle 'plasticboy/vim-markdown'
-
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'klen/python-mode'
 Bundle 'jnwhiteh/vim-golang'
 
@@ -100,12 +100,22 @@ set t_Co=256
 set hidden
 
 set nobackup " no *~ backup files
-"colors koehler
-colors kolor
 
-"---------------------------------------------------------------------------
+"colorscheme kolor
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+colorscheme solarized
+
+"--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
-"---------------------------------------------------------------------------
+"--------------------------------------------------------------------------- 
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -299,6 +309,7 @@ let g:NERDTreeWinSize = 40
 nnoremap <f1> :BufExplorer<cr>
 nnoremap <f2> :NERDTreeToggle<cr>
 nnoremap <f3> :TagbarToggle<cr>
+nnoremap <silent> <f5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<cr>
 
 " set focus to TagBar when opening it
 let g:tagbar_autofocus = 1
@@ -382,7 +393,7 @@ imap <C-a> <esc>0i
 " Disable completion previews with function prototypes, etc.
 set completeopt=menu
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+autocmd FileType c,cpp let g:UltiSnipsSnippetDirectories=["snippets"]
 
 let g:C_Ctrl_j   = 'off'
 
