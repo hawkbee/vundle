@@ -1,6 +1,12 @@
+[ui]
+username = Qun He
+verbose = True
+editor = vim
+
 [extensions]
 color =
 pager =
+rebase =
 
 [color]
 status.modified = magenta bold
@@ -12,4 +18,4 @@ status.ignored = black bold
 
 [pager]
 pager = less -FRX
-#attend =
+attend = help log
