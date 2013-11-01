@@ -6,7 +6,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
@@ -18,9 +18,12 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'ervandew/supertab'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
 Bundle 'jnwhiteh/vim-golang'
-
+Bundle 'mbbill/echofunc'
+Bundle 'Chiel92/vim-autoformat'
+Bundle 'hawkbee/cscope_maps'
 Bundle 'vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
@@ -101,7 +104,7 @@ set hidden
 
 set nobackup " no *~ backup files
 
-"colorscheme kolor
+"colorscheme for solarized
 if has('gui_running')
     set background=light
 else
@@ -113,9 +116,24 @@ endif
 "let g:solarized_visibility="high"
 colorscheme solarized
 
-"--------------------------------------------------------------------------- 
+"colorscheme for molokai
+set t_Co=256
+"colorscheme molokai
+" hilight function name
+autocmd BufNewFile,BufRead * :syntax match cfunctions "\<[a-zA-Z_][a-zA-Z_0-9]*\>[^()]*)("me=e-2
+autocmd BufNewFile,BufRead * :syntax match cfunctions "\<[a-zA-Z_][a-zA-Z_0-9]*\>\s*("me=e-1
+highlight cfunctions ctermfg=81
+highlight Type ctermfg=120 cterm=none
+highlight Structure ctermfg=120 cterm=none
+highlight Macro ctermfg=161 cterm=bold
+highlight PreCondit ctermfg=161 cterm=bold
+highlight CursorLine cterm=underline
+set cursorline
+
+
+"---------------------------------------------------------------------------
 " ENCODING SETTINGS
-"--------------------------------------------------------------------------- 
+"---------------------------------------------------------------------------
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -180,11 +198,17 @@ set statusline+=%#error#
 set statusline+=%{&paste?'[paste]':''}
 set statusline+=%*
 
+"display echofunc prototype
+set statusline+=%#error#
+set statusline+=%{EchoFuncGetStatusLine()}%=
+set statusline+=%*
+
 set statusline+=%=      "left/right separator
 set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
 set laststatus=2
 
 "recalculate the trailing whitespace warning when idle, and after saving
@@ -369,17 +393,34 @@ autocmd BufReadPost fugitive://*
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
+autocmd BufRead,BufNew,BufAdd * silent! call LoadTags()
+function! LoadTags()
+    let dir = expand("%:p:h") . '/'
+    let i = 0
+    while isdirectory(dir) && i < 5
+        echom dir
+        if has("cscope") && filereadable(dir . 'cscope.out')
+            execute ':cs add ' . dir . 'cscope.out'
+            let i = 6
+        endif
+        if filereadable(dir . 'tags')
+            execute ':set tags=' . dir . 'tags'
+            let i = 6
+        endif
+        let dir = dir . '../'
+        let i = i + 1
+    endwhile
+endfunction
+
+
 if has("cscope")
-    "set csprg=/usr/bin/cscope
     set csprg=cscope
     set csto=0
     set cst
     set nocsverb
     " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
     " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
+    if $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
     set csverb
@@ -409,3 +450,8 @@ let g:ycm_confirm_extra_conf = 0
 autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 autocmd  BufEnter *.org call org#SetOrgFileType() | set wrap
 let g:SuperTabDefaultCompletionType = "context"
+
+let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
+
+let g:formatprg_c = "astyle"
+let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
