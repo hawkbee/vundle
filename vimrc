@@ -23,7 +23,6 @@ Bundle 'klen/python-mode'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'mbbill/echofunc'
 Bundle 'Chiel92/vim-autoformat'
-Bundle 'hawkbee/cscope_maps'
 Bundle 'vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
@@ -426,6 +425,7 @@ if has("cscope")
     set csverb
 endif
 
+map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
 " map CTRL-E to end-of-line (insert mode)
 imap <C-e> <esc>$i<right>
 " " map CTRL-A to beginning-of-line (insert mode)
