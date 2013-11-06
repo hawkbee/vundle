@@ -1,0 +1,12 @@
+[user]
+	email = hequn@cdforward.office
+	name = hequn
+[color]
+	ui = true
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+[push]
+	default = simple
