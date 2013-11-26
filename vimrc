@@ -27,6 +27,7 @@ Bundle 'Chiel92/vim-autoformat'
 Bundle 'vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
+Bundle 'pangloss/vim-javascript'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
