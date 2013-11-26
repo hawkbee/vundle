@@ -454,5 +454,6 @@ let g:SuperTabDefaultCompletionType = "context"
 
 let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
 
+let g:vim_markdown_folding_disabled=1
 let g:formatprg_c = "astyle"
 let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
