@@ -10,3 +10,5 @@
 	br = branch
 [push]
 	default = simple
+[diff]
+	renameLimit = 100000
