@@ -66,7 +66,7 @@ endif
 "default indent settings
 set shiftwidth=4
 set softtabstop=4
-set expandtab
+set tabstop=4
 set autoindent
 set copyindent " copy the previous indentation on autoindenting
 
@@ -157,6 +157,7 @@ if has('win32')
 endif
 
 autocmd FileType ruby set expandtab | set softtabstop=2 | set shiftwidth=2
+autocmd FileType c,cpp set expandtab
 
 "statusline setup
 set statusline =%#identifier#
@@ -460,8 +461,13 @@ autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 autocmd  BufEnter *.org call org#SetOrgFileType() | set wrap
 let g:SuperTabDefaultCompletionType = "context"
 
-let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
+let g:vim_markdown_initial_foldlevel=2
+let g:vimwiki_list = [{'path': '~/my_site/',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-let g:vim_markdown_folding_disabled=1
-let g:formatprg_c = "astyle"
+let g:formatprg_c = 'astyle'
 let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
+"let g:formatprg_c = 'indent'
+"let g:formatprg_args_expr_c = '"-kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"'
+
+"let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
