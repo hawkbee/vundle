@@ -28,12 +28,12 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'mbbill/echofunc'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
 Bundle 'pangloss/vim-javascript'
+Bundle 'bling/vim-airline'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -160,64 +160,6 @@ autocmd FileType ruby set expandtab | set softtabstop=2 | set shiftwidth=2
 autocmd FileType c,cpp set expandtab
 
 "statusline setup
-set statusline =%#identifier#
-set statusline+=[%t]    "tail of the filename
-set statusline+=%*
-
-"display a warning if fileformat isnt unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
-
-"display a warning if file encoding isnt utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-
-set statusline+=%h      "help file flag
-set statusline+=%y      "filetype
-
-"read only flag
-set statusline+=%#identifier#
-set statusline+=%r
-set statusline+=%*
-
-"modified flag
-set statusline+=%#identifier#
-set statusline+=%m
-set statusline+=%*
-
-set statusline+=%{fugitive#statusline()}
-
-"display a warning if &et is wrong, or we have mixed-indenting
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
-
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-
-set statusline+=%{StatuslineLongLineWarning()}
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-
-"display echofunc prototype
-set statusline+=%#error#
-set statusline+=%{EchoFuncGetStatusLine()}%=
-set statusline+=%*
-
-set statusline+=%=      "left/right separator
-set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-
 set laststatus=2
 
 "recalculate the trailing whitespace warning when idle, and after saving
