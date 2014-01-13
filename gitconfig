@@ -8,6 +8,7 @@
 	ci = commit
 	co = checkout
 	br = branch
+	dt = difftool
 [push]
 	default = simple
 [diff]
