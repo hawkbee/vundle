@@ -34,6 +34,8 @@ Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
 Bundle 'pangloss/vim-javascript'
 Bundle 'bling/vim-airline'
+Bundle 'wookiehangover/jshint.vim'
+Bundle 'mattn/emmet-vim'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -156,7 +158,8 @@ if has('win32')
     set guifont=Lucida_Console:h12:cANSI
 endif
 
-autocmd FileType ruby set expandtab | set softtabstop=2 | set shiftwidth=2
+autocmd FileType ruby,javascript,css,html
+      \	set expandtab | set softtabstop=2 | set shiftwidth=2
 autocmd FileType c,cpp set expandtab
 
 "statusline setup
@@ -406,6 +409,8 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:vim_markdown_initial_foldlevel=2
 let g:vimwiki_list = [{'path': '~/my_site/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let delimitMate_expand_cr = 1
 
 let g:formatprg_c = 'astyle'
 let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
