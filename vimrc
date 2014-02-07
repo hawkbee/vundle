@@ -29,13 +29,15 @@ Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Chiel92/vim-autoformat'
-Bundle 'vimwiki'
+Bundle 'vimwiki/vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
 Bundle 'pangloss/vim-javascript'
 Bundle 'bling/vim-airline'
 Bundle 'wookiehangover/jshint.vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'kchmck/vim-coffee-script'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
