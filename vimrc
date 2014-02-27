@@ -15,15 +15,15 @@ endif
 " required!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'SirVer/ultisnips'
 Bundle 'mileszs/ack.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'ervandew/supertab'
-Bundle 'plasticboy/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
@@ -393,9 +393,6 @@ set completeopt=menu
 
 autocmd FileType c,cpp let g:UltiSnipsSnippetDirectories=["snippets"]
 
-let g:C_Ctrl_j   = 'off'
-
-let g:syntastic_c_checkers=['make', 'gcc']
 " UltiSnips default to TAB, conflict with YCM, use C-j instead
 let g:UltiSnipsExpandTrigger="<c-j>"
 
@@ -408,7 +405,6 @@ autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 autocmd  BufEnter *.org call org#SetOrgFileType() | set wrap
 let g:SuperTabDefaultCompletionType = "context"
 
-let g:vim_markdown_initial_foldlevel=2
 let g:vimwiki_list = [{'path': '~/my_site/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
