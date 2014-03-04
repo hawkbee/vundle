@@ -38,6 +38,7 @@ Bundle 'wookiehangover/jshint.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'ahayman/vim-nodejs-complete'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
