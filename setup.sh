@@ -14,6 +14,16 @@ if [ ! -d bundle/vundle/ ]; then
 	git clone https://github.com/gmarik/vundle.git
 fi
 
+if [ ! -d ~/.bash_it ]; then
+	git clone https://github.com/revans/bash-it.git ~/.bash_it
+	~/.bash_it/install.sh
+fi
+
+if [ ! -d ~/.oh-my-zsh ]; then
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+fi
+
 cd
 
 [ ! -f .vimrc ] && ln -s .vim/vimrc .vimrc
