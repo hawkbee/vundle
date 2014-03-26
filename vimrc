@@ -150,6 +150,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,latin1
+set fileformat=unix
+set fileformats=unix,dos,mac
 if has('win32')
     source $VIMRUNTIME/mswin.vim
     behave mswin
