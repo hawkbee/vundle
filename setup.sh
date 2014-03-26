@@ -31,5 +31,6 @@ cd
 [ ! -f .hgrc ]  && ln -s .vim/hgrc .hgrc
 [ ! -f .gitconfig ] && ln -s .vim/gitconfig .gitconfig
 [ ! -f .tmux.conf ] && ln -s .vim/tmux.conf .tmux.conf
+[ ! -f .dir_colors ] && ln -s .vim/dircolors.256dark .dir_colors
 
-echo "Setup vim environment success"
+echo "Setup development environment success"
