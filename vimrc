@@ -163,7 +163,7 @@ if has('win32')
     set guifont=Lucida_Console:h12:cANSI
 endif
 
-autocmd FileType ruby,javascript,css,html
+autocmd FileType ruby,javascript,css,html,jade
       \	set expandtab | set softtabstop=2 | set shiftwidth=2
 autocmd FileType c,cpp set expandtab
 
