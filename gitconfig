@@ -15,3 +15,7 @@
 	renameLimit = 100000
 [core]
 	editor = vim
+[bash-it]
+	hide-status = 1
+[on-my-zsh]
+	hide-status = 1
