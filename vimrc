@@ -397,8 +397,6 @@ imap <C-a> <esc>0i
 " Disable completion previews with function prototypes, etc.
 set completeopt=menu
 
-autocmd FileType c,cpp let g:UltiSnipsSnippetDirectories=["snippets"]
-
 " UltiSnips default to TAB, conflict with YCM, use C-j instead
 let g:UltiSnipsExpandTrigger="<c-j>"
 
