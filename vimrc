@@ -39,6 +39,9 @@ Bundle 'wookiehangover/jshint.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'valloric/YouCompleteMe'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'moll/vim-node'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -399,10 +402,6 @@ set completeopt=menu
 
 " UltiSnips default to TAB, conflict with YCM, use C-j instead
 let g:UltiSnipsExpandTrigger="<c-j>"
-
-" youcompleteme is still crappy for C++ if no ycm_extra_conf.py is used
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_confirm_extra_conf = 0
 
 "VimOrganizer
 autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org

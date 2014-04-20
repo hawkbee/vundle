@@ -33,5 +33,6 @@ cd
 [ ! -f .tmux.conf ] && ln -s .vim/tmux.conf .tmux.conf
 [ ! -f .dircolors ] && ln -s .vim/dircolors.256dark .dircolors
 [ ! -f .bash_profile ] && ln -s .vim/bash_profile .bash_profile
+[ ! -f .ycm_extra_conf.py  ] && ln -s .vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py .ycm_extra_conf.py
 
 echo "Setup development environment success"
