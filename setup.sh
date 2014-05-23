@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 if ! git version > /dev/null 2>&1
 then
@@ -11,11 +11,13 @@ if [ ! -d bundle ]; then
 fi
 
 if [ ! -d bundle/vundle/ ]; then
-	git clone https://github.com/gmarik/vundle.git
+	cd bunlde && git clone https://github.com/gmarik/vundle.git
 fi
 
+cd
+
 if [ ! -d ~/.bash_it ]; then
-	git clone https://github.com/revans/bash-it.git ~/.bash_it
+	git clone https://github.com/hawkbee/bash-it.git ~/.bash_it
 	~/.bash_it/install.sh
 fi
 
@@ -26,13 +28,13 @@ fi
 
 cd
 
-[ ! -f .vimrc ] && ln -s .vim/vimrc .vimrc
 [ ! -f .ctags ] && ln -s .vim/ctags .ctags
 [ ! -f .hgrc ]  && ln -s .vim/hgrc .hgrc
 [ ! -f .gitconfig ] && ln -s .vim/gitconfig .gitconfig
 [ ! -f .tmux.conf ] && ln -s .vim/tmux.conf .tmux.conf
 [ ! -f .dircolors ] && ln -s .vim/dircolors.256dark .dircolors
 [ ! -f .bash_profile ] && ln -s .vim/bash_profile .bash_profile
-[ ! -f .ycm_extra_conf.py  ] && ln -s .vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py .ycm_extra_conf.py
+[ ! -f .tern-project ] && ln -s .vim/tern-project .tern-project
+[ ! -f .ycm_extra_conf.py  ] && ln -s .vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py .ycm_extra_conf.py
 
 echo "Setup development environment success"
