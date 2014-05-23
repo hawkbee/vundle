@@ -419,3 +419,12 @@ let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(
 "let g:formatprg_args_expr_c = '"-kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"'
 
 "let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
+
+" 开启标签补全引擎
+"let g:ycm_collect_identifiers_from_tags_files = 1
+" 允许加载配置文件
+let g:ycm_confirm_extra_conf=0
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+" 集成OmniCppComplete补全引擎，设置快捷键
+inoremap <leader>; <C-x><C-o>
