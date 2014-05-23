@@ -42,4 +42,6 @@ export TODO="t"
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
+[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
+
 eval `dircolors ~/.dircolors`
