@@ -120,17 +120,13 @@ set hidden
 set nobackup " no *~ backup files
 
 "colorscheme for solarized
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-"let g:solarized_termtrans=1
-"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 colorscheme desert
 colorscheme solarized
+set background=dark
 
 "colorscheme for molokai
 "colorscheme molokai
@@ -164,6 +160,10 @@ if has('win32')
     language messages zh_CN.utf-8
     "set fileformats=unix
     set guifont=Lucida_Console:h12:cANSI
+endif
+
+if has('mac')
+	set guifont=Monaco:h19
 endif
 
 autocmd FileType ruby,javascript,css,html,jade

@@ -11,19 +11,45 @@ if [ ! -d bundle ]; then
 fi
 
 if [ ! -d bundle/vundle/ ]; then
-	cd bunlde && git clone https://github.com/gmarik/vundle.git
+	cd bundle && git clone https://github.com/gmarik/vundle.git
 fi
 
 cd
 
 if [ ! -d ~/.bash_it ]; then
-	git clone https://github.com/hawkbee/bash-it.git ~/.bash_it
-	~/.bash_it/install.sh
+	while [[ true ]]; do
+		read -p "Do you use bash(bash_it)?[Y/N]"
+		case $REPLY in
+		[yY])
+			git clone https://github.com/hawkbee/bash-it.git ~/.bash_it
+			~/.bash_it/install.sh
+			break
+			;;
+		[nN])
+			break
+			;;
+		*)
+			echo "Please enter Y or N"
+		esac
+	done
 fi
 
 if [ ! -d ~/.oh-my-zsh ]; then
-	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-	cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+	while [[ true ]]; do
+		read -p "Do you use zsh(oh-my-zsh)?[Y/N]"
+		case $REPLY in
+			[Yy])
+				git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+				cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+				break
+				;;
+			[Nn])
+				break
+				;;
+			*)
+				echo "Please enter Y or N"
+		esac
+	done
 fi
 
 cd
