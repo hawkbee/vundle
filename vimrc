@@ -40,7 +40,7 @@ Bundle 'wookiehangover/jshint.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'valloric/YouCompleteMe'
+"Bundle 'valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
 
@@ -121,8 +121,10 @@ set hidden
 set nobackup " no *~ backup files
 
 "colorscheme for solarized
+if has('mac')
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
+endif
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
 colorscheme desert
