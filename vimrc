@@ -33,6 +33,7 @@ Bundle 'Chiel92/vim-autoformat'
 Bundle 'vimwiki/vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'bling/vim-airline'
 Bundle 'wookiehangover/jshint.vim'
@@ -428,3 +429,16 @@ let g:ycm_confirm_extra_conf=0
 let g:ycm_cache_omnifunc=0
 " 集成OmniCppComplete补全引擎，设置快捷键
 inoremap <leader>; <C-x><C-o>
+
+let g:neocomplete#enable_at_startup = 1
+
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" location list window, or close it when is has become empty.
+"
+" Note: Must allow nesting of autocmds to enable any customizations for quickfix
+" buffers.
+" Note: Normally, :cwindow jumps to the quickfix window if the command opens it
+" (but not if it's already open). However, as part of the autocmd, this doesn't
+" seem to happen.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
