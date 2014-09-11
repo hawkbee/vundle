@@ -33,6 +33,7 @@ Bundle 'Chiel92/vim-autoformat'
 Bundle 'vimwiki/vimwiki'
 Bundle 'bufexplorer.zip'
 Bundle 'OmniCppComplete'
+Bundle 'gtags.vim'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'bling/vim-airline'
@@ -359,39 +360,60 @@ autocmd BufReadPost fugitive://*
   \ endif
 
 autocmd BufRead,BufNew,BufAdd * silent! call LoadTags()
+autocmd BufWritePost *.[ch] call UpdateTags(expand('<afile>'))
+
 function! LoadTags()
     let dir = expand("%:p:h") . '/'
-    let i = 0
-    while isdirectory(dir) && i < 5
-        echom dir
-        if has("cscope") && filereadable(dir . 'cscope.out')
-            execute ':cs add ' . dir . 'cscope.out'
-            let i = 6
+    while isdirectory(dir)
+		if has("cscope")
+			if executable("gtags-cscope") && filereadable(dir . 'GTAGS')
+				execute ':cs add ' . dir . 'GTAGS'
+			elseif filereadable(dir . 'cscope.out')
+				execute ':cs add ' . dir . 'cscope.out'
+			endif
         endif
         if filereadable(dir . 'tags')
-            execute ':set tags=' . dir . 'tags'
-            let i = 6
+            execute ':set tags+=' . dir . 'tags'
         endif
-        let dir = dir . '../'
-        let i = i + 1
+        let dir = fnamemodify(dir . '../', ":p")
+        echom dir
+        if dir == '/'
+            break
+        endif
     endwhile
 endfunction
 
+function! UpdateTags(f)
+	let dir = fnamemodify(a:f, ':p:h')
+	if executable("global")
+	    execute 'silent !cd ' . dir . ' && global -u &> /dev/null &'
+	endif
+endfunction
 
 if has("cscope")
-    set csprg=cscope
-    set csto=0
-    set cst
-    set nocsverb
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-    " add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-    " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
+	if executable("gtags-cscope")
+		set cscopetag
+		set cscopeprg=gtags-cscope
+		set csto=0
+		set cscopequickfix=c-,d-,e-,f-,g0,i-,s-,t-
+		if filereadable("GTAGS")
+			cs add GTAGS
+		endif
+	else
+		set csprg=cscope
+		set csto=0
+		set cst
+		set nocsverb
+		set cscopequickfix=s-,c-,d-,i-,t-,e-
+		" add any database in current directory
+		if filereadable("cscope.out")
+			cs add cscope.out
+		" else add database pointed to by environment
+		elseif $CSCOPE_DB != ""
+			cs add $CSCOPE_DB
+		endif
+		set csverb
+	endif
 endif
 
 map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
@@ -413,6 +435,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 let g:vimwiki_list = [{'path': '~/my_site/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_dir_link = 'index'
 
 let delimitMate_expand_cr = 1
 
@@ -422,6 +445,11 @@ let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(
 "let g:formatprg_args_expr_c = '"-kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"'
 
 "let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
+
+" 显示函数原型
+let OmniCpp_ShowPrototypeInAbbr = 1
+
+let g:Gtags_Use_Tags_Format = 1
 
 " 开启标签补全引擎
 "let g:ycm_collect_identifiers_from_tags_files = 1
