@@ -28,7 +28,7 @@ Bundle 'ervandew/supertab'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
-Bundle 'jnwhiteh/vim-golang'
+Bundle 'fatih/vim-go'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'vimwiki/vimwiki'
 Bundle 'bufexplorer.zip'
@@ -460,6 +460,7 @@ let g:ycm_cache_omnifunc=0
 " 集成OmniCppComplete补全引擎，设置快捷键
 inoremap <leader>; <C-x><C-o>
 
+let g:go_disable_autoinstall = 1
 let g:neocomplete#enable_at_startup = 1
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
