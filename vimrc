@@ -45,6 +45,7 @@ Bundle 'kchmck/vim-coffee-script'
 "Bundle 'valloric/YouCompleteMe'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
+Bundle 'wting/rust.vim'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
