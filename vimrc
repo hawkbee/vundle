@@ -124,8 +124,8 @@ set nobackup " no *~ backup files
 
 "colorscheme for solarized
 if has('mac')
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
 endif
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
@@ -168,11 +168,11 @@ if has('win32')
 endif
 
 if has('mac')
-	set guifont=Monaco:h19
+    set guifont=Monaco:h19
 endif
 
 autocmd FileType ruby,javascript,css,html,jade
-      \	set expandtab | set softtabstop=2 | set shiftwidth=2
+      \ set expandtab | set softtabstop=2 | set shiftwidth=2
 autocmd FileType c,cpp set expandtab
 
 "statusline setup
@@ -360,18 +360,22 @@ autocmd BufReadPost fugitive://*
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
-autocmd BufRead,BufNew,BufAdd * silent! call LoadTags()
+"autocmd BufRead,BufNew,BufAdd * silent! call LoadTags()
 autocmd BufWritePost *.[ch] call UpdateTags(expand('<afile>'))
+
+let g:cscope_use_gtags = 0
 
 function! LoadTags()
     let dir = expand("%:p:h") . '/'
     while isdirectory(dir)
-		if has("cscope")
-			if executable("gtags-cscope") && filereadable(dir . 'GTAGS')
-				execute ':cs add ' . dir . 'GTAGS'
-			elseif filereadable(dir . 'cscope.out')
-				execute ':cs add ' . dir . 'cscope.out'
-			endif
+        if has("cscope")
+            if g:cscope_use_gtags == 1
+                if executable("gtags-cscope") && filereadable(dir . 'GTAGS')
+                    execute ':cs add ' . dir . 'GTAGS'
+                endif
+            elseif filereadable(dir . 'cscope.out')
+                execute ':cs add ' . dir . 'cscope.out'
+            endif
         endif
         if filereadable(dir . 'tags')
             execute ':set tags+=' . dir . 'tags'
@@ -385,37 +389,45 @@ function! LoadTags()
 endfunction
 
 function! UpdateTags(f)
-	let dir = fnamemodify(a:f, ':p:h')
-	if executable("global")
-	    execute 'silent !cd ' . dir . ' && global -u &> /dev/null &'
-	endif
+    let dir = fnamemodify(a:f, ':p:h')
+    if executable("global")
+        execute 'silent !cd ' . dir . ' && global -u &> /dev/null &'
+    endif
+endfunction
+
+function! UseGtags()
+    if has("cscope")
+        if executable("gtags-cscope")
+            set cscopetag
+            set cscopeprg=gtags-cscope
+            set csto=0
+            set cscopequickfix=c-,d-,e-,f-,g0,i-,s-,t-
+            if filereadable("GTAGS")
+                cs add GTAGS
+            endif
+            let g:cscope_use_gtags = 1
+        endif
+    endif
+    LoadTags()
 endfunction
 
 if has("cscope")
-	if executable("gtags-cscope")
-		set cscopetag
-		set cscopeprg=gtags-cscope
-		set csto=0
-		set cscopequickfix=c-,d-,e-,f-,g0,i-,s-,t-
-		if filereadable("GTAGS")
-			cs add GTAGS
-		endif
-	else
-		set csprg=cscope
-		set csto=0
-		set cst
-		set nocsverb
-		set cscopequickfix=s-,c-,d-,i-,t-,e-
-		" add any database in current directory
-		if filereadable("cscope.out")
-			cs add cscope.out
-		" else add database pointed to by environment
-		elseif $CSCOPE_DB != ""
-			cs add $CSCOPE_DB
-		endif
-		set csverb
-	endif
+    set csprg=cscope
+    set csto=0
+    set cst
+    set nocsverb
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
 endif
+
+autocmd Filetype c,cpp silent! call UseGtags()
 
 map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
 " map CTRL-E to end-of-line (insert mode)
