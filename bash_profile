@@ -3,6 +3,8 @@
 # Load RVM, if you are using it
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
+export LANG=zh_CN.UTF-8
+
 # Add rvm gems and nginx to the path
 export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
 
@@ -38,6 +40,10 @@ export TODO="t"
 # Set vcprompt executable path for scm advance info in prompt (demula theme)
 # https://github.com/xvzf/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+CONF_PLUGINS="base dirs hg ssh tmux todo"
+CONF_ALIASES="general git gitsvn hg vim"
+CONF_COMPLETION="bash-it defaults git git_flow ssh tmux"
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
