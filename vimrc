@@ -409,7 +409,7 @@ function! UseGtags()
             let g:cscope_use_gtags = 1
         endif
     endif
-    LoadTags()
+    call LoadTags()
 endfunction
 
 if has("cscope")
