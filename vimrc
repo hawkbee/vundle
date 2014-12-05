@@ -47,6 +47,7 @@ Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
 Bundle 'wting/rust.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'godlygeek/tabular'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
