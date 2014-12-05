@@ -6,7 +6,7 @@
 export LANG=zh_CN.UTF-8
 
 # Add rvm gems and nginx to the path
-export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
+export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin:~/node_modules/.bin
 
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
