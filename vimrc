@@ -126,7 +126,7 @@ set hidden
 set nobackup " no *~ backup files
 
 "colorscheme for solarized
-if has('mac') || has('unix')
+if has('mac')
     let g:solarized_termtrans=1
     let g:solarized_termcolors=256
 endif
