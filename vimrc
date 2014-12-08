@@ -174,7 +174,7 @@ if has('mac')
     set guifont=Monaco:h19
 endif
 
-autocmd FileType ruby,javascript,css,html,jade
+autocmd FileType ruby,javascript,css,html,jade,coffee
       \ set expandtab | set softtabstop=2 | set shiftwidth=2
 autocmd FileType c,cpp set expandtab
 
