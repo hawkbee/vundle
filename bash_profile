@@ -13,7 +13,7 @@ export BASH_IT=$HOME/.bash_it
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='powerline-plain'
+export BASH_IT_THEME='duru'
 
 # Your place for hosting Git repos. I use this for private repos.
 export GIT_HOSTING='git@git.domain.com'
@@ -42,7 +42,7 @@ export TODO="t"
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 CONF_PLUGINS="base dirs hg ssh tmux todo"
-CONF_ALIASES="general git gitsvn hg vim"
+CONF_ALIASES="general git gitsvn hg"
 CONF_COMPLETION="bash-it defaults git git_flow ssh tmux"
 
 # Load Bash It
