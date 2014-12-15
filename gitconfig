@@ -13,9 +13,12 @@
 	default = simple
 [diff]
 	renameLimit = 100000
+	tool = vimdiff
 [core]
 	editor = vim
 [bash-it]
 	hide-status = 1
 [on-my-zsh]
 	hide-status = 1
+[difftool]
+	prompt = 0
