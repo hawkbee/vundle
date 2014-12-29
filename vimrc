@@ -15,7 +15,8 @@ endif
 " required!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
@@ -47,7 +48,6 @@ Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
 Bundle 'wting/rust.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'godlygeek/tabular'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
