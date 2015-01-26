@@ -48,6 +48,7 @@ Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
 Bundle 'wting/rust.vim'
 Bundle 'kien/ctrlp.vim'
+Bundle 'editorconfig/editorconfig-vim'
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -303,6 +304,7 @@ let g:NERDTreeWinSize = 40
 nnoremap <f1> :BufExplorer<cr>
 nnoremap <f2> :NERDTreeToggle<cr>
 nnoremap <f3> :TagbarToggle<cr>
+nnoremap <f4> :Gtags<SPACE>
 nnoremap <silent> <f5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<cr>
 
 " set focus to TagBar when opening it
