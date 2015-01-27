@@ -5,65 +5,67 @@ filetype off
 
 if has('win32')
     set rtp+=$VIM/vimfiles/bundle/vundle/
-    call vundle#rc('$VIM/vimfiles/bundle/')
+    call vundle#begin('$VIM/vimfiles/bundle/')
 else
     set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    call vundle#begin()
 endif
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
+Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
 
-Bundle 'godlygeek/tabular'
-Bundle 'Chiel92/vim-autoformat'
-Bundle 'editorconfig/editorconfig-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'editorconfig/editorconfig-vim'
 
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 
-Bundle 'majutsushi/tagbar'
-Bundle 'gtags.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'gtags.vim'
 
-Bundle 'bling/vim-airline'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tomasr/molokai'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
 
-"Bundle 'klen/python-mode'
-Bundle 'fatih/vim-go'
-Bundle 'wting/rust.vim'
+"Plugin 'klen/python-mode'
+Plugin 'fatih/vim-go'
+Plugin 'wting/rust.vim'
 
-Bundle 'rfc-syntax'
+Plugin 'rfc-syntax'
 
-Bundle 'plasticboy/vim-markdown'
-Bundle 'vimwiki/vimwiki'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'vimwiki/vimwiki'
 
-"Bundle 'wookiehangover/jshint.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'pangloss/vim-javascript'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'moll/vim-node'
-Bundle 'kchmck/vim-coffee-script'
+"Plugin 'wookiehangover/jshint.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'moll/vim-node'
+Plugin 'kchmck/vim-coffee-script'
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
-Bundle 'OmniCppComplete'
+Plugin 'OmniCppComplete'
 
 if has('win32')
-Bundle 'ervandew/supertab'
-Bundle 'Shougo/neocomplete.vim'
+Plugin 'ervandew/supertab'
+Plugin 'Shougo/neocomplete.vim'
 else
-Bundle 'valloric/YouCompleteMe'
+Plugin 'valloric/YouCompleteMe'
 endif
+
+call vundle#end()
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
