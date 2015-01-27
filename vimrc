@@ -15,40 +15,55 @@ endif
 " required!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+
 Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
+Bundle 'Chiel92/vim-autoformat'
+Bundle 'editorconfig/editorconfig-vim'
+
+Bundle 'jlanzarotta/bufexplorer'
+Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
+
 Bundle 'majutsushi/tagbar'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'mileszs/ack.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
+Bundle 'gtags.vim'
+
+Bundle 'bling/vim-airline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
-Bundle 'klen/python-mode'
+
+"Bundle 'klen/python-mode'
 Bundle 'fatih/vim-go'
-Bundle 'Chiel92/vim-autoformat'
-Bundle 'vimwiki/vimwiki'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'OmniCppComplete'
-Bundle 'gtags.vim'
+Bundle 'wting/rust.vim'
+
 Bundle 'rfc-syntax'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'bling/vim-airline'
-Bundle 'wookiehangover/jshint.vim'
+
+Bundle 'plasticboy/vim-markdown'
+Bundle 'vimwiki/vimwiki'
+
+"Bundle 'wookiehangover/jshint.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'digitaltoad/vim-jade'
-Bundle 'kchmck/vim-coffee-script'
-"Bundle 'valloric/YouCompleteMe'
+Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'moll/vim-node'
-Bundle 'wting/rust.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'editorconfig/editorconfig-vim'
+Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'scrooloose/syntastic'
+
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+
+Bundle 'OmniCppComplete'
+
+if has('win32')
+Bundle 'ervandew/supertab'
+Bundle 'Shougo/neocomplete.vim'
+else
+Bundle 'valloric/YouCompleteMe'
+endif
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -470,13 +485,41 @@ let OmniCpp_ShowPrototypeInAbbr = 1
 let g:Gtags_Use_Tags_Format = 1
 
 " 开启标签补全引擎
-"let g:ycm_collect_identifiers_from_tags_files = 1
+set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    "回车即选中当前项
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+"youcompleteme  默认tab  s-tab 和自动补全冲突
+"let g:ycm_key_list_select_completion=['<c-n>']
+"let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+
+"let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
+let g:ycm_cache_omnifunc=0  " 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1    " 语法关键字补全
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>    "force recomile with syntastic
+"nnoremap <leader>lo :lopen<CR> "open locationlist
+"nnoremap <leader>lc :lclose<CR>    "close locationlist
+" 集成OmniCppComplete补全引擎，设置快捷键
+inoremap <leader><leader> <C-x><C-o>
+"在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 允许加载配置文件
 let g:ycm_confirm_extra_conf=0
-" 禁止缓存匹配项，每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
-" 集成OmniCppComplete补全引擎，设置快捷键
-inoremap <leader>; <C-x><C-o>
+
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 
 let g:go_disable_autoinstall = 1
 let g:neocomplete#enable_at_startup = 1
