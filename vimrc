@@ -23,7 +23,6 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 
@@ -64,6 +63,8 @@ Plugin 'Shougo/neocomplete.vim'
 else
 Plugin 'valloric/YouCompleteMe'
 endif
+
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
 
@@ -489,7 +490,7 @@ let g:Gtags_Use_Tags_Format = 1
 " 开启标签补全引擎
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif "离开插入模式后自动关闭预览窗口
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    "回车即选中当前项
+imap <expr> <CR>       pumvisible() ? "\<C-y>" : "<Plug>delimitMateCR"    "回车即选中当前项
 "上下左右键的行为 会显示其他信息
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
