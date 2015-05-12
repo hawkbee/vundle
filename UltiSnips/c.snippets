@@ -26,6 +26,14 @@ ${0}
 endsnippet
 
 snippet func "HQ: Function definition"
+${1:void} ${2:test}(${3:void})
+{
+	${4}
+}
+${5}
+endsnippet
+
+snippet funcd "HQ: Function declaration"
 /*
  * @brief ${1}
  * @author hequn
@@ -81,4 +89,22 @@ if (${1}) {
 } else {
     ${3}
 }
+endsnippet
+
+snippet while "HQ: self define while"
+while (${1}) {
+	${2}
+}${3}
+endsnippet
+
+snippet cpp "HQ: extern c define" b
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+${1}
+
+#ifdef __cplusplus
+}
+#endif
 endsnippet
