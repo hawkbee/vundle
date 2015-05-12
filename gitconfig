@@ -9,6 +9,7 @@
 	co = checkout
 	br = branch
 	dt = difftool
+	df = diff
 	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 [push]
 	default = simple
