@@ -36,6 +36,7 @@ Plugin 'tomasr/molokai'
 "Plugin 'klen/python-mode'
 Plugin 'fatih/vim-go'
 Plugin 'wting/rust.vim'
+Plugin 'cespare/vim-toml'
 
 Plugin 'rfc-syntax'
 
@@ -195,7 +196,6 @@ endif
 
 autocmd FileType ruby,javascript,css,html,jade,coffee
       \ set expandtab | set softtabstop=2 | set shiftwidth=2
-autocmd FileType c,cpp set expandtab
 
 "statusline setup
 set laststatus=2
@@ -484,8 +484,9 @@ let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(
 
 " 显示函数原型
 let OmniCpp_ShowPrototypeInAbbr = 1
-
 let g:Gtags_Use_Tags_Format = 1
+" 添加注释时添加空格
+let NERDSpaceDelims = 1
 
 " 开启标签补全引擎
 set completeopt=longest,menu    "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
