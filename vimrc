@@ -37,6 +37,7 @@ Plugin 'tomasr/molokai'
 Plugin 'fatih/vim-go'
 Plugin 'wting/rust.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'phildawes/racer'
 
 Plugin 'rfc-syntax'
 
