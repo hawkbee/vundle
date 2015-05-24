@@ -34,15 +34,16 @@ ZSH_THEME="norm"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby)
-#plugins=()
+plugins=(osx git brew brew-cask)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-export PATH=$PATH:~/.gem/ruby/2.0.0/bin
-export GOPATH=~/develop/test/go
+export PATH=~/.gem/ruby/2.0.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+export MANPATH=/usr/local/opt/coreutils/libexec/gnubin:$MANPATH
 export TERM="xterm-256color"
 
 eval `dircolors ~/.dircolors`
+alias ls="ls -F --color=auto"
+export ZLS_COLORS=${LS_COLORS}
