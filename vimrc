@@ -16,6 +16,7 @@ endif
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'godlygeek/tabular'
