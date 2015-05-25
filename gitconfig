@@ -18,6 +18,7 @@
 	tool = vimdiff
 [core]
 	editor = vim
+	excludesfile = ~/.vim/gitignore
 [bash-it]
 	hide-status = 1
 [on-my-zsh]
