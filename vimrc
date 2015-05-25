@@ -535,7 +535,7 @@ let g:neocomplete#enable_at_startup = 1
 
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/](\.(git|hg|svn)|OUTPUT)$',
-    \ 'file': '\v\.(exe|so|dll|d|o|bin)$',
+    \ 'file': '\v(\.(exe|so|dll|d|o|bin)|GTAGS|GRTAGS|GSYMS|GPATH|TAGS|tags)$',
     \ }
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
