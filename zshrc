@@ -39,7 +39,7 @@ plugins=(tmux git git-extras gitignore osx brew brew-cask)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:~/.linuxbrew/bin
+export PATH=$HOME/.linuxbrew/bin:$PATH
 export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
 export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
 
