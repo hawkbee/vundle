@@ -4,6 +4,7 @@
 [color]
 	ui = true
 [alias]
+	su = status -s -uno
 	st = status
 	ci = commit
 	co = checkout
@@ -21,7 +22,7 @@
 	excludesfile = ~/.vim/gitignore
 [bash-it]
 	hide-status = 1
-[on-my-zsh]
-	hide-status = 1
+[oh-my-zsh]
+	hide-status = 0
 [difftool]
 	prompt = 0
