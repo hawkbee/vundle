@@ -40,7 +40,6 @@ if [ ! -d ~/.oh-my-zsh ]; then
 		case $REPLY in
 			[Yy])
 				git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-				cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 				break
 				;;
 			[Nn])
@@ -52,14 +51,17 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	done
 fi
 
+# link config file
 cd
 
+[ ! -f .quiltrc ] && ln -s .vim/quiltrc .quiltrc
 [ ! -f .ctags ] && ln -s .vim/ctags .ctags
 [ ! -f .hgrc ]  && ln -s .vim/hgrc .hgrc
 [ ! -f .gitconfig ] && ln -s .vim/gitconfig .gitconfig
 [ ! -f .tmux.conf ] && ln -s .vim/tmux.conf .tmux.conf
 [ ! -f .dircolors ] && ln -s .vim/dircolors.256dark .dircolors
 [ ! -f .bash_profile ] && ln -s .vim/bash_profile .bash_profile
+[ ! -f .zshrc ] && ln -s .vim/zshrc .zshrc
 [ ! -f .tern-project ] && ln -s .vim/tern-project .tern-project
 [ ! -f .ycm_extra_conf.py  ] && ln -s .vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py .ycm_extra_conf.py
 
