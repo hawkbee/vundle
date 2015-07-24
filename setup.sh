@@ -51,6 +51,22 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	done
 fi
 
+if [ ! -d ~/.emacs.d ]; then
+	while [[ true ]]; do
+		read -p "Do you use spacemacs?[Y/N]"
+		case $REPLY in
+			[Yy])
+				git clone https://github.com/syl20bnr/spacemacs.git  ~/.emacs.d
+				break
+				;;
+			[Nn])
+				break
+				;;
+			*)
+				echo "Please enter Y or N"
+		esac
+	done
+fi
 # link config file
 cd
 
