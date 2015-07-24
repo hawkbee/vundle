@@ -48,7 +48,9 @@ export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
 export PATH=~/.gem/ruby/2.0.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export MANPATH=/usr/local/opt/coreutils/libexec/gnubin:$MANPATH
 export TERM="xterm-256color"
+# export TERM="xterm-16color"
 
 eval `dircolors ~/.dircolors`
 alias ls="ls -F --color=auto"
+alias emacs="TERM=xterm-16color emacs"
 export ZLS_COLORS=${LS_COLORS}
