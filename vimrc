@@ -38,9 +38,10 @@ Plugin 'tomasr/molokai'
 Plugin 'fatih/vim-go'
 Plugin 'wting/rust.vim'
 Plugin 'cespare/vim-toml'
-Plugin 'phildawes/racer'
 
 Plugin 'rfc-syntax'
+Plugin 'tpope/vim-speeddating'
+Plugin 'jceb/vim-orgmode'
 
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vimwiki/vimwiki'
@@ -49,7 +50,6 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'mattn/emmet-vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'pangloss/vim-javascript'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'moll/vim-node'
 Plugin 'kchmck/vim-coffee-script'
 
@@ -466,12 +466,9 @@ set completeopt=menu
 " UltiSnips default to TAB, conflict with YCM, use C-j instead
 let g:UltiSnipsExpandTrigger="<c-j>"
 
-"VimOrganizer
-autocmd! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-autocmd  BufEnter *.org call org#SetOrgFileType() | set wrap
 let g:SuperTabDefaultCompletionType = "context"
 
-let g:vimwiki_list = [{'path': '~/my_site/',
+let g:vimwiki_list = [{'path': '~/docs/my_site/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_dir_link = 'index'
 
@@ -507,7 +504,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
 
-"let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+" let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
 let g:ycm_cache_omnifunc=0  " 禁止缓存匹配项,每次都重新生成匹配项
 let g:ycm_seed_identifiers_with_syntax=1    " 语法关键字补全
@@ -524,11 +521,10 @@ let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 允许加载配置文件
 let g:ycm_confirm_extra_conf=0
+let g:ycm_rust_src_path = '/home/hawkbee/devel/rust/src'
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
-
-"映射tern模块的快捷键
-let g:tern_map_keys = 1
+nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 
 let g:go_disable_autoinstall = 1
 let g:neocomplete#enable_at_startup = 1

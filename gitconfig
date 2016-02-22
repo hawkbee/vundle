@@ -17,6 +17,7 @@
 [diff]
 	renameLimit = 100000
 	tool = vimdiff
+	algorithm = histogram
 [core]
 	editor = vim
 	excludesfile = ~/.vim/gitignore
