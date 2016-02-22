@@ -1,6 +1,11 @@
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
+(set-variable 'ycmd-server-command '("python" "/Users/hequn/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
+(set-variable 'ycmd-global-config "/Users/hequn/.ycm_extra_conf.py")
+(add-hook 'c-mode-hook 'ycmd-mode)
+(add-hook 'c++-mode-hook 'ycmd-mode)
+(add-hook 'python-mode-hook 'ycmd-mode)
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
@@ -12,6 +17,7 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     osx
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -38,8 +44,10 @@
      c-c++
      html
      javascript
+     rust
      ycmd
      gtags
+     semantic
      )
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
@@ -167,6 +175,8 @@ before layers configuration."
 layers configuration."
   (global-hl-line-mode -1)
   (global-linum-mode)
+  (yas-global-mode 1)
+  (yas-reload-all)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
