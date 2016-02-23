@@ -1,11 +1,21 @@
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-(set-variable 'ycmd-server-command '("python" "/Users/hequn/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
-(set-variable 'ycmd-global-config "/Users/hequn/.ycm_extra_conf.py")
+
+(set-variable 'ycmd-server-command '("python2" "/home/hawkbee/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
+(set-variable 'ycmd-global-config "/home/hawkbee/.ycm_extra_conf.py")
 (add-hook 'c-mode-hook 'ycmd-mode)
+(add-hook 'rust-mode-hook 'ycmd-mode)
 (add-hook 'c++-mode-hook 'ycmd-mode)
 (add-hook 'python-mode-hook 'ycmd-mode)
+(setq tramp-ssh-controlmaster-options
+            "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+(unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" "/home/hawkbee/devel/rust/src"))
+(setq exec-path (cons "/home/hawkbee/.cargo/bin" exec-path))
+(setq racer-cmd "/home/hawkbee/.cargo/bin/racer")
+(setq racer-rust-src-path "/home/hawkbee/devel/rust/src")
+(setq-default rust-enable-racer nil)
+(setq company-tooltip-align-annotations t)
 
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
@@ -31,8 +41,10 @@
      ;; markdown
      ;; org
      ;; shell
-     ;; syntax-checking
-     auto-completion
+     syntax-checking
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t)
      better-defaults
      (git :variables
           git-gutter-use-fringe t)
@@ -40,13 +52,12 @@
      org
      syntax-checking
      python
-     editorconfig
      c-c++
      html
      javascript
      rust
-     ycmd
      gtags
+     ycmd
      semantic
      )
    ;; List of additional packages that will be installed wihout being
@@ -146,7 +157,7 @@ before layers configuration."
    ;; Transparency can be toggled through `toggle-transparency'.
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line.
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen.
