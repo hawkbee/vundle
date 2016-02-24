@@ -2,21 +2,6 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
-(set-variable 'ycmd-server-command '("python2" "/home/hawkbee/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
-(set-variable 'ycmd-global-config "/home/hawkbee/.ycm_extra_conf.py")
-(add-hook 'c-mode-hook 'ycmd-mode)
-(add-hook 'rust-mode-hook 'ycmd-mode)
-(add-hook 'c++-mode-hook 'ycmd-mode)
-(add-hook 'python-mode-hook 'ycmd-mode)
-(setq tramp-ssh-controlmaster-options
-            "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-(unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" "/home/hawkbee/devel/rust/src"))
-(setq exec-path (cons "/home/hawkbee/.cargo/bin" exec-path))
-(setq racer-cmd "/home/hawkbee/.cargo/bin/racer")
-(setq racer-rust-src-path "/home/hawkbee/devel/rust/src")
-(setq-default rust-enable-racer nil)
-(setq company-tooltip-align-annotations t)
-
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -180,14 +165,39 @@ before layers configuration."
   ;; User initialization goes here
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init'.  You are free to put almost
+any user code here.  The exception is org related code, which should be placed
+in `dotspacemacs/user-config'."
+  ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  ;; (setq tramp-mode nil)
+  (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  (setq evil-shift-round nil))
+
+(defun dotspacemacs/user-config ()
   "Configuration function.
- This function is called at the very end of Spacemacs initialization after
+This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (global-hl-line-mode -1)
   (global-linum-mode)
   (yas-global-mode 1)
   (yas-reload-all)
+  (set-variable 'ycmd-server-command '("python2"))
+  (add-to-list 'ycmd-server-command (expand-file-name "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd") t)
+  (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  (add-hook 'rust-mode-hook 'ycmd-mode)
+  (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'python-mode-hook 'ycmd-mode)
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src")))
+  (setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
+  (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
+  (setq racer-rust-src-path (expand-file-name "~/devel/rust/src"))
+  (setq-default rust-enable-racer nil)
+  (setq company-tooltip-align-annotations t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
