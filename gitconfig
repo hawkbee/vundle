@@ -6,7 +6,7 @@
 [alias]
 	su = status -s -uno
 	st = status
-	ci = commit
+	ci = commit -s
 	co = checkout
 	br = branch
 	dt = difftool

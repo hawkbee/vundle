@@ -66,7 +66,7 @@ before layers configuration."
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer.
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -82,8 +82,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
-                         solarized-light
+   dotspacemacs-themes '(solarized-light
+                         solarized-dark
                          leuven
                          monokai
                          zenburn)
@@ -183,6 +183,7 @@ layers configuration."
   (global-linum-mode)
   (yas-global-mode 1)
   (yas-reload-all)
+  (set-variable 'ycmd-extra-conf-handler 'load)
   (set-variable 'ycmd-server-command '("python2"))
   (add-to-list 'ycmd-server-command (expand-file-name "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd") t)
   (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
@@ -198,6 +199,8 @@ layers configuration."
   (setq racer-rust-src-path (expand-file-name "~/devel/rust/src"))
   (setq-default rust-enable-racer nil)
   (setq company-tooltip-align-annotations t)
+  (setq c-default-style "linux")
+  (setq-default c-basic-offset 4 tab-width 4 indent-tabs-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

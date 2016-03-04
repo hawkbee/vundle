@@ -33,6 +33,7 @@ Plugin 'gtags.vim'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
 
 "Plugin 'klen/python-mode'
 Plugin 'fatih/vim-go'
@@ -156,7 +157,8 @@ endif
 "let g:solarized_visibility="high"
 colorscheme desert
 colorscheme solarized
-set background=dark
+" set background=dark
+set background=light
 
 "colorscheme for molokai
 "colorscheme molokai
@@ -480,6 +482,8 @@ let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(
 "let g:formatprg_args_expr_c = '"-kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"'
 
 "let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
+set formatprg=astyle
+"set equalprg=astyle
 
 " 显示函数原型
 let OmniCpp_ShowPrototypeInAbbr = 1
