@@ -56,3 +56,4 @@ eval `dircolors ~/.dircolors`
 alias ls="ls -F --color=auto"
 # alias emacs="TERM=xterm-16color emacs"
 export ZLS_COLORS=${LS_COLORS}
+setopt noglob
