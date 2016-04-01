@@ -35,8 +35,13 @@ values."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
+     shell
+     ranger
      syntax-checking
+     semantic
+     ycmd
      (auto-completion :variables
+                      auto-completion-enable-sort-by-usage nil
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      better-defaults
@@ -44,22 +49,20 @@ values."
           git-gutter-use-fringe t)
      markdown
      org
-     syntax-checking
      python
-     c-c++
+     shell-scripts
+     (c-c++ :variables c-c++-enable-clang-support t)
      html
      javascript
      rust
      gtags
-     ycmd
-     semantic
      )
    ;; List of additional packages that will be installed without being
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(evil-jumper)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -90,7 +93,7 @@ values."
    ;; variable is `emacs' then the `holy-mode' is enabled at startup. `hybrid'
    ;; uses emacs key bindings for vim's insert mode, but otherwise leaves evil
    ;; unchanged. (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -274,24 +277,30 @@ you should place you code here."
   (global-linum-mode)
   (yas-global-mode 1)
   (yas-reload-all)
+  (setq ycmd-tag-files 'auto)
+  (setq ycmd-request-message-level -1)
   (set-variable 'ycmd-extra-conf-handler 'load)
   (set-variable 'ycmd-server-command '("python2"))
   (add-to-list 'ycmd-server-command (expand-file-name "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd") t)
   (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
-  (add-hook 'c-mode-hook 'ycmd-mode)
+  ;; (add-hook 'c-mode-hook 'ycmd-mode)
+  ;; (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'rust-mode-hook 'ycmd-mode)
-  (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'python-mode-hook 'ycmd-mode)
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src")))
+  ;; (setq company-backends-c-mode-common '((company-ycmd company-c-headers company-dabbrev :with company-yasnippet)))
   (setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
   (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
   (setq racer-rust-src-path (expand-file-name "~/devel/rust/src"))
   (setq-default rust-enable-racer nil)
   (setq company-tooltip-align-annotations t)
   (setq c-default-style "linux")
-  (setq-default c-basic-offset 4 tab-width 4 indent-tabs-mode t)
+  (setq tab-width 4)
+  (defvaralias 'c-basic-offset 'tab-width)
+  (when (not (display-graphic-p))
+    (setq flycheck-indication-mode nil))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
