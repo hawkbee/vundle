@@ -54,15 +54,16 @@ values."
      (c-c++ :variables c-c++-enable-clang-support t)
      html
      javascript
+     react
      rust
      gtags
      )
    ;; List of additional packages that will be installed without being
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(evil-jumper)
+   dotspacemacs-excluded-packages '(evil-jumper flycheck-pos-tip iswitchb)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -287,6 +288,7 @@ you should place you code here."
   ;; (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'rust-mode-hook 'ycmd-mode)
   (add-hook 'python-mode-hook 'ycmd-mode)
+  (add-hook 'js2-mode-hook 'ycmd-mode)
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src")))
