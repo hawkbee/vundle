@@ -476,13 +476,13 @@ let g:vimwiki_dir_link = 'index'
 
 let delimitMate_expand_cr = 1
 
-let g:formatprg_c = 'astyle'
-let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
+" let g:formatprg_c = 'astyle'
+" let g:formatprg_args_expr_c = '"--mode=c --style=kr --max-code-length=80 -pcH".(&expandtab ? "s".&shiftwidth : "t")'
 "let g:formatprg_c = 'indent'
 "let g:formatprg_args_expr_c = '"-kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"'
 
 "let &equalprg = "indent -kr -nut -l80 -nfca -ncdb -npsl -nbc -di8"
-set formatprg=astyle
+" set formatprg=astyle
 "set equalprg=astyle
 
 " 显示函数原型

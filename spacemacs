@@ -51,7 +51,7 @@ values."
      org
      python
      shell-scripts
-     (c-c++ :variables c-c++-enable-clang-support t)
+     c-c++
      html
      javascript
      react
@@ -274,6 +274,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (editorconfig-mode 1)
   (global-hl-line-mode -1)
   (global-linum-mode)
   (yas-global-mode 1)
@@ -284,23 +285,20 @@ you should place you code here."
   (set-variable 'ycmd-server-command '("python2"))
   (add-to-list 'ycmd-server-command (expand-file-name "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd") t)
   (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
-  ;; (add-hook 'c-mode-hook 'ycmd-mode)
-  ;; (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'rust-mode-hook 'ycmd-mode)
   (add-hook 'python-mode-hook 'ycmd-mode)
   (add-hook 'js2-mode-hook 'ycmd-mode)
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src")))
-  ;; (setq company-backends-c-mode-common '((company-ycmd company-c-headers company-dabbrev :with company-yasnippet)))
   (setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
   (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
   (setq racer-rust-src-path (expand-file-name "~/devel/rust/src"))
   (setq-default rust-enable-racer nil)
   (setq company-tooltip-align-annotations t)
-  (setq c-default-style "linux")
-  (setq tab-width 4)
-  (defvaralias 'c-basic-offset 'tab-width)
+  (setq-default c-default-style "linux")
   (when (not (display-graphic-p))
     (setq flycheck-indication-mode nil))
   )
