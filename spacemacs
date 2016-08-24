@@ -38,7 +38,7 @@ values."
      shell
      ranger
      syntax-checking
-     semantic
+     ;; semantic
      ycmd
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage nil
@@ -279,16 +279,23 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
   (editorconfig-mode 1)
+  (add-hook 'editorconfig-custom-hooks
+            (lambda (hash) (setq web-mode-block-padding 0)))
+  (add-hook 'web-mode-hook 'editorconfig-mode)
   (global-hl-line-mode -1)
   (global-linum-mode)
+  (global-company-mode)
   (yas-global-mode 1)
   (yas-reload-all)
   (setq ycmd-tag-files 'auto)
   (setq ycmd-request-message-level -1)
   (set-variable 'ycmd-extra-conf-handler 'load)
-  (set-variable 'ycmd-server-command '("python2"))
+  ;; (set-variable 'ycmd-server-command '("/usr/bin/ycmd"))
+  (set-variable 'ycmd-server-command '("python"))
   (add-to-list 'ycmd-server-command (expand-file-name "~/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd") t)
   (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
+  (setq company-transformers '(spacemacs//company-transformer-cancel
+                               company-sort-by-backend-importance))
   (add-hook 'c-mode-hook 'ycmd-mode)
   (add-hook 'c++-mode-hook 'ycmd-mode)
   (add-hook 'rust-mode-hook 'ycmd-mode)
