@@ -78,8 +78,8 @@ cd
 [ ! -f .dircolors ] && ln -s .vim/dircolors.256dark .dircolors
 [ ! -f .bash_profile ] && ln -s .vim/bash_profile .bash_profile
 [ ! -f .zshrc ] && ln -s .vim/zshrc .zshrc
+[ ! -f .zshenv ] && ln -s .vim/zshenv .zshenv
 [ ! -f .spacemacs ] && ln -s .vim/spacemacs .spacemacs
 [ ! -f .tern-config ] && ln -s .vim/tern-config .tern-config
-[ ! -f .ycm_extra_conf.py  ] && ln -s .vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py .ycm_extra_conf.py
 
 echo "Setup development environment success"
