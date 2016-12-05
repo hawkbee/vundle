@@ -39,16 +39,8 @@ plugins=(tmux git git-extras gitignore osx brew brew-cask)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
-export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
-export PATH=$HOME/.linuxbrew/bin:$HOME/.cargo/bin:$HOME/.gem/ruby/2.0.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
-export MANPATH=/usr/local/opt/coreutils/libexec/gnubin:$MANPATH
-export TERM="xterm-256color"
-# export TERM="xterm-16color"
-export LANG=zh_CN.UTF-8
-
 
 eval `dircolors ~/.dircolors`
 alias ls="ls -F --color=auto"
-# alias emacs="TERM=xterm-16color emacs"
-export ZLS_COLORS=${LS_COLORS}
+alias emacs="emacs -nw"
+# alias emacs="TERM=xterm-color emacs -nw"

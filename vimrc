@@ -101,9 +101,6 @@ if v:version >= 703
 endif
 
 "default indent settings
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
 set autoindent
 set copyindent " copy the previous indentation on autoindenting
 
@@ -157,11 +154,11 @@ endif
 "let g:solarized_visibility="high"
 colorscheme desert
 colorscheme solarized
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 
 "colorscheme for molokai
-"colorscheme molokai
+colorscheme molokai
 
 " hilight function name
 autocmd BufNewFile,BufRead * :syntax match cfunctions "\<[a-zA-Z_][a-zA-Z_0-9]*\>[^()]*)("me=e-2
@@ -184,6 +181,13 @@ set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,latin1
 set fileformat=unix
 set fileformats=unix,dos,mac
+if has('gui_running')
+    set guifontwide=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    " set guifontset=
+    " set guifontwide=
+    " set guifont=*
+    colorscheme solarized
+endif
 if has('win32')
     source $VIMRUNTIME/mswin.vim
     behave mswin
@@ -507,6 +511,7 @@ inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 "let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+let g:ycm_global_ycm_extra_conf = '~/.vim/global_conf.py'
 
 " let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
 let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
@@ -524,7 +529,6 @@ let g:ycm_complete_in_strings = 1
 "注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 允许加载配置文件
-let g:ycm_confirm_extra_conf=0
 let g:ycm_rust_src_path = '/home/hawkbee/devel/rust/src'
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
