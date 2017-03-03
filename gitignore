@@ -2,7 +2,4 @@ GTAGS
 GRTAGS
 GPATH
 GSYMS
-.editorconfig
-.ycm_extra_conf.*
-*.swp
 .pc/

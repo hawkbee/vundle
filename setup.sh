@@ -68,18 +68,25 @@ if [ ! -d ~/.emacs.d ]; then
 	done
 fi
 # link config file
+if [ ! -d ~/.config/awesome ]; then
+	mkdir -p ~/.config
+	git clone --recursive https://github.com/copycat-killer/awesome-copycats.git  ~/.config/awesome
 cd
 
-[ ! -f .quiltrc ] && ln -s .vim/quiltrc .quiltrc
-[ ! -f .ctags ] && ln -s .vim/ctags .ctags
-[ ! -f .hgrc ]  && ln -s .vim/hgrc .hgrc
-[ ! -f .gitconfig ] && ln -s .vim/gitconfig .gitconfig
-[ ! -f .tmux.conf ] && ln -s .vim/tmux.conf .tmux.conf
-[ ! -f .dircolors ] && ln -s .vim/dircolors.256dark .dircolors
+[ ! -f .quiltrc ]      && ln -s .vim/quiltrc .quiltrc
+[ ! -f .ctags ]        && ln -s .vim/ctags .ctags
+[ ! -f .hgrc ]         && ln -s .vim/hgrc .hgrc
+[ ! -f .gitconfig ]    && ln -s .vim/gitconfig .gitconfig
+[ ! -f .tmux.conf ]    && ln -s .vim/tmux.conf .tmux.conf
+[ ! -f .dircolors ]    && ln -s .vim/dircolors.256dark .dircolors
 [ ! -f .bash_profile ] && ln -s .vim/bash_profile .bash_profile
-[ ! -f .zshrc ] && ln -s .vim/zshrc .zshrc
-[ ! -f .zshenv ] && ln -s .vim/zshenv .zshenv
-[ ! -f .spacemacs ] && ln -s .vim/spacemacs .spacemacs
-[ ! -f .tern-config ] && ln -s .vim/tern-config .tern-config
+[ ! -f .zshrc ]        && ln -s .vim/zshrc .zshrc
+[ ! -f .zshenv ]       && ln -s .vim/zshenv .zshenv
+[ ! -f .spacemacs ]    && ln -s .vim/spacemacs .spacemacs
+[ ! -f .tern-config ]  && ln -s .vim/tern-config .tern-config
+[ ! -f .globalrc ]     && ln -s .vim/globalrc .globalrc
+[ ! -f .Xresources ]   && ln -s .vim/Xresources .Xresources
+[ ! -f .config/awesome/rc.lua ]   && cd .config/awesome && ln -s ~/.vim/awesome.lua rc.lua
+
 
 echo "Setup development environment success"

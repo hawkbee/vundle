@@ -42,5 +42,6 @@ source $ZSH/oh-my-zsh.sh
 
 eval `dircolors ~/.dircolors`
 alias ls="ls -F --color=auto"
-alias emacs="emacs -nw"
-# alias emacs="TERM=xterm-color emacs -nw"
+# alias emacs="emacs -nw"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

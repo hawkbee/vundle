@@ -31,6 +31,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     vimscript
+     lua
+     nginx
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -76,7 +79,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(editorconfig)
+   dotspacemacs-additional-packages '(editorconfig indent-guide)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -149,11 +152,11 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         spacemacs-light
-                         leuven
                          solarized-dark
                          solarized-light
                          spacemacs-dark
+                         spacemacs-light
+                         leuven
                          jazz
                          zenburn
                          molokai)
@@ -164,7 +167,8 @@ values."
    dotspacemacs-default-font '(
                                "Source Code Pro"
                                ;; "WenQuanYi Micro Hei Mono"
-                               :size 16
+                               ;; "Monospace Regular"
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -345,6 +349,7 @@ you should place you code here."
   (add-hook 'editorconfig-custom-hooks
             (lambda (hash) (setq web-mode-block-padding 0)))
   (add-hook 'web-mode-hook 'editorconfig-mode)
+  (indent-guide-global-mode)
   (global-hl-line-mode -1)
   (global-linum-mode)
   (global-company-mode)
@@ -364,8 +369,8 @@ you should place you code here."
   ;; (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
   ;; (setq company-transformers '(spacemacs//company-transformer-cancel
                                ;; company-sort-by-backend-importance))
-  ;; (add-hook 'c-mode-hook 'ycmd-mode)
-  ;; (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  (add-hook 'c++-mode-hook 'ycmd-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
   ;; (add-hook 'rust-mode-hook 'ycmd-mode)
   ;; (add-hook 'js2-mode-hook 'ycmd-mode)

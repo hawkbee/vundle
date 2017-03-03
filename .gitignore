@@ -1,7 +1,8 @@
+autoload/
+plugged/
 bundle/
 *.s[a-w][a-z]
-bundle/
 *.un~
-Session.vim
 .netrwhist
 *~
+undofiles

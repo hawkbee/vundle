@@ -35,7 +35,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
 
-"Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
 Plugin 'fatih/vim-go'
 Plugin 'wting/rust.vim'
 Plugin 'cespare/vim-toml'
@@ -152,13 +152,9 @@ if has('mac')
 endif
 "let g:solarized_contrast="high"
 "let g:solarized_visibility="high"
-colorscheme desert
 colorscheme solarized
 set background=dark
-" set background=light
 
-"colorscheme for molokai
-colorscheme molokai
 
 " hilight function name
 autocmd BufNewFile,BufRead * :syntax match cfunctions "\<[a-zA-Z_][a-zA-Z_0-9]*\>[^()]*)("me=e-2
@@ -201,9 +197,6 @@ endif
 if has('mac')
     set guifont=Monaco:h19
 endif
-
-autocmd FileType ruby,javascript,css,html,jade,coffee
-      \ set expandtab | set softtabstop=2 | set shiftwidth=2
 
 "statusline setup
 set laststatus=2
@@ -530,6 +523,8 @@ let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 允许加载配置文件
 let g:ycm_rust_src_path = '/home/hawkbee/devel/rust/src'
+
+let g:python_host_prog = '/usr/bin/python'
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处

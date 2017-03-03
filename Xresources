@@ -1,0 +1,9 @@
+#include ".vim/Xresources.dark"
+
+URxvt.font: xft:WenQuanYi MicroHei Mono-12
+URxvt.intensityStyles: false
+
+*.background: #111013
+*.foreground: #abaeb3
+URxvt*depth:32
+URxvt*dynamicColors:on
