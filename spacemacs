@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      vimscript
      lua
      nginx
@@ -70,6 +71,7 @@ values."
      shell-scripts
      c-c++
      html
+     lua
      javascript
      react
      rust
@@ -79,11 +81,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(editorconfig indent-guide)
+   dotspacemacs-additional-packages '(vue-mode editorconfig)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(spaceline evil-jumper flycheck-pos-tip iswitchb)
+   dotspacemacs-excluded-packages '(spaceline persp-mode evil-jumper flycheck-pos-tip iswitchb)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -152,10 +154,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         spacemacs-light
                          solarized-dark
                          solarized-light
                          spacemacs-dark
-                         spacemacs-light
                          leuven
                          jazz
                          zenburn
@@ -284,7 +286,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -331,9 +333,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq evil-shift-round nil)
   (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -346,12 +348,15 @@ you should place you code here."
   (setq delete-by-moving-to-trash nil)
   (editorconfig-mode 1)
   (setq persp-auto-save-opt 0)
+  (add-to-list 'auto-mode-alist '("\\.wpy\\'" . vue-mode))
   (add-hook 'editorconfig-custom-hooks
             (lambda (hash) (setq web-mode-block-padding 0)))
   (add-hook 'web-mode-hook 'editorconfig-mode)
-  (indent-guide-global-mode)
-  (global-hl-line-mode -1)
-  (global-linum-mode)
+  (setq company-backends-web-mode '((company-dabbrev-code
+                                     company-keywords
+                                     company-etags
+                                     company-files
+                                     company-dabbrev)))
   (global-company-mode)
   (yas-global-mode 1)
   (yas-reload-all)
@@ -369,8 +374,9 @@ you should place you code here."
   ;; (set-variable 'ycmd-global-config (expand-file-name "~/.ycm_extra_conf.py"))
   ;; (setq company-transformers '(spacemacs//company-transformer-cancel
                                ;; company-sort-by-backend-importance))
-  (add-hook 'c-mode-hook 'ycmd-mode)
-  (add-hook 'c++-mode-hook 'ycmd-mode)
+  ;; (add-hook 'c-mode-hook 'ycmd-mode)
+  ;; (add-hook 'c++-mode-hook 'ycmd-mode)
+  ;; (add-hook 'python-mode-hook 'highlight-indentation-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
   ;; (add-hook 'rust-mode-hook 'ycmd-mode)
   ;; (add-hook 'js2-mode-hook 'ycmd-mode)

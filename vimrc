@@ -524,7 +524,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 允许加载配置文件
 let g:ycm_rust_src_path = '/home/hawkbee/devel/rust/src'
 
-let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/home/hawkbee/.virtualenvs/neovim/bin/python'
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
 nnoremap <leader>] :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
