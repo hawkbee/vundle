@@ -76,7 +76,8 @@ values."
      react
      rust
      gtags
-     )
+     graphviz
+     go)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -167,10 +168,12 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '(
-                               "Source Code Pro"
+                               ;; "Source Code Pro"
+                               ;; "Noto Sans Mono CJK SC"
+                               "Noto Mono"
                                ;; "WenQuanYi Micro Hei Mono"
                                ;; "Monospace Regular"
-                               :size 18
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -318,6 +321,7 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+   exec-path-from-shell-check-startup-files nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -345,21 +349,21 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
-  (setq delete-by-moving-to-trash nil)
+  (global-company-mode)
+  (yas-global-mode 1)
+  (yas-reload-all)
+  (yas-global-mode 1)
+  (yas-reload-all)
   (editorconfig-mode 1)
+  (setq delete-by-moving-to-trash nil)
   (setq persp-auto-save-opt 0)
   (add-to-list 'auto-mode-alist '("\\.wpy\\'" . vue-mode))
-  (add-hook 'editorconfig-custom-hooks
-            (lambda (hash) (setq web-mode-block-padding 0)))
-  (add-hook 'web-mode-hook 'editorconfig-mode)
   (setq company-backends-web-mode '((company-dabbrev-code
                                      company-keywords
                                      company-etags
                                      company-files
                                      company-dabbrev)))
-  (global-company-mode)
-  (yas-global-mode 1)
-  (yas-reload-all)
+  (add-hook 'web-mode-hook 'editorconfig-mode-apply 'append)
   (setq ycmd-force-semantic-completion t)
   ;; (setq ycmd-tag-files 'auto)
   ;; (setq ycmd-request-message-level -1)
