@@ -1,4 +1,6 @@
 # Path to your oh-my-zsh configuration.
+[[ "$TERM" == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.

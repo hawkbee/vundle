@@ -24,7 +24,7 @@
 # You can specify target with GTAGSLABEL environment variable.
 #
 default:\
-	:tc=native:tc=pygments:
+	:tc=native:tc=ctags:
 native:\
 	:tc=gtags:tc=htags:
 user:\

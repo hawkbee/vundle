@@ -67,6 +67,7 @@ values."
           git-gutter-use-fringe t)
      markdown
      org
+     php
      python
      shell-scripts
      c-c++
