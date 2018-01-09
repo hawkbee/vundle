@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     plantuml
      yaml
      vimscript
      lua
@@ -57,7 +58,7 @@ values."
      ranger
      syntax-checking
      ;; semantic
-     ycmd
+     ;; ycmd
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage nil
                       auto-completion-enable-snippets-in-popup t
@@ -67,7 +68,7 @@ values."
           git-gutter-use-fringe t)
      markdown
      org
-     php
+     ;; php
      python
      shell-scripts
      c-c++
@@ -337,6 +338,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; (set gc-cons-threshold 100000000)
   (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq evil-shift-round nil)
+  (setq org-plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
           ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
@@ -359,6 +361,7 @@ you should place you code here."
   (setq delete-by-moving-to-trash nil)
   (setq persp-auto-save-opt 0)
   (add-to-list 'auto-mode-alist '("\\.wpy\\'" . vue-mode))
+  (add-to-list 'vue-mode-hook #'smartparens-mode)
   (setq company-backends-web-mode '((company-dabbrev-code
                                      company-keywords
                                      company-etags
@@ -385,11 +388,13 @@ you should place you code here."
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
   ;; (add-hook 'rust-mode-hook 'ycmd-mode)
   ;; (add-hook 'js2-mode-hook 'ycmd-mode)
+  (setq plantuml-jar-path "/usr/share/plantuml/plantuml.jar")
+  ;; (setq plantuml-java-args '("-charset UTF-8" "-Djava.awt.headless=true" "-jar"))
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
-  (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/devel/rust/src")))
+  (unless (getenv "RUST_SRC_PATH") (setenv "RUST_SRC_PATH" (expand-file-name "~/cloud/devel/rust/src")))
   ;; (setq exec-path (cons (expand-file-name "~/.cargo/bin") exec-path))
-  ;; (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
+  (setq racer-cmd (expand-file-name "~/.cargo/bin/racer"))
   ;; (setq racer-rust-src-path (expand-file-name "~/devel/rust/src"))
   (setq-default rust-enable-racer nil)
   (setq company-tooltip-align-annotations t)
