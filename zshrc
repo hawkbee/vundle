@@ -12,7 +12,9 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="gallois"
 #ZSH_THEME="apple"
 #ZSH_THEME="random"
-ZSH_THEME="norm"
+#ZSH_THEME="norm"
+#ZSH_THEME="essembeh"
+ZSH_THEME="suvash"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"

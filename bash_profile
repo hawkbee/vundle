@@ -81,3 +81,5 @@ load_bash_it_files "plugins" "${CONF_PLUGINS}"
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
 
 eval `dircolors ~/.dircolors`
+
+export PATH="$HOME/.cargo/bin:$PATH"

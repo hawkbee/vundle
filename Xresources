@@ -1,7 +1,10 @@
 #include ".vim/Xresources.dark"
 
 #URxvt.font: xft:WenQuanYi MicroHei Mono-12
-URxvt.font: xft:Noto Sans Mono CJK SC-12
+! URxvt.font: xft:PowerlineSymbols,xft:Noto Sans Mono CJK SC-12
+URxvt.font: xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=15,xft:WenQuanYi MicroHei Mono:size=15,xft:Noto Mono:size=15
+! URxvt.font: xft:Source Code Pro:size=15,xft:DejaVu Sans Mono for Powerline:size=15,xft:WenQuanYi MicroHei Mono:size=15,xft:Noto Mono:size=15
+URxvt.letterspace: -5
 URxvt.intensityStyles: false
 URxvt.saveLines: 20000
 

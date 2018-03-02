@@ -1,0 +1,10 @@
+if !exists("g:editor")
+  let g:editor = "vim"
+  let home = $HOME.'/.'.g:editor.'/autoload'
+end
+
+let base = 'https://github.com/junegunn/vim-plug.git'
+
+if !isdirectory(g:home)
+  :silent execute '!git clone --depth=1 '.g:base.' '.g:home
+end
