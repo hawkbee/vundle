@@ -171,10 +171,13 @@ let g:pymode_breakpoint_bind = '<LocalLeader>b'
 Plug 'alvan/vim-closetag', {'for': ['html', 'xml', 'htmldjango', 'vue']}
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
 
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug 'othree/yajs.vim', {'for': ['javascript'], 'tag': '1.6'}
-" Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+" Plug 'othree/yajs.vim', {'for': ['javascript'], 'tag': '1.6'}
+" Plug 'neoclide/vim-jsx-improve'
+Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'mxw/vim-jsx'
+autocmd BufRead,BufNewFile *.vue,*.wpy setf javascript.jsx
 
 Plug 'vim-scripts/po.vim--Jelenak', {'for': 'po'}
 
