@@ -18,6 +18,7 @@ source ~/.vim/vimrc.default
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['javascript', 'jsx', 'css']
 
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
@@ -56,17 +57,20 @@ set cscopetag
 endif
 
 " Really nice prompt
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.linenr = '¶'
-let g:airline_powerline_fonts = 1
-let g:airline_theme='dark'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" if !exists('g:airline_symbols')
+  " let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='dark'
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
 " let g:airline_section_z=''
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'bling/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'ryanoasis/vim-devicons'
+Plug 'itchyny/lightline.vim'
+set laststatus=2
 
 Plug 'jparise/vim-graphql'
 "
@@ -75,12 +79,12 @@ Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
@@ -89,9 +93,17 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'fleischie/vim-styled-components'
 
-Plug 'ctrlpvim/ctrlp.vim'
-map <Leader>pf :CtrlP<cr>
-map <Leader>bb :CtrlPBuffer<cr>
+Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
+map <Leader>pf :LeaderfFile<cr>
+map <Leader>bb :LeaderfBuffer<cr>
+
+" Plug 'Shougo/denite.nvim'
+" map <Leader>pf :Denite file<cr>
+" map <Leader>bb :Denite buffer<cr>
+" Plug 'ctrlpvim/ctrlp.vim'
+" map <Leader>pf :CtrlP<cr>
+" map <Leader>bb :CtrlPBuffer<cr>
+
 "Editorconfig
 if executable('editorconfig') && has('python')
 Plug 'editorconfig/editorconfig-vim'
@@ -103,9 +115,9 @@ Plug 'scrooloose/nerdtree'
 let g:NERDTreeMouseMode = 2
 let g:NERDTreeWinSize = 40
 " map <leader>0 :NERDTreeToggle<CR>
-" Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 " 添" 加注释时添加空格
-" let g:NERDSpaceDelims = 1
+let g:NERDSpaceDelims = 1
 
 Plug 'majutsushi/tagbar'
 " set focus to TagBar when opening it
@@ -126,6 +138,7 @@ endif
 
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/peaksea'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -134,6 +147,7 @@ Plug 'flowtype/vim-flow'
 
 " Automatically find root project directory
 Plug 'airblade/vim-rooter'
+let g:rooter_resolve_links = 1
 let g:rooter_disable_map = 1
 let g:rooter_silent_chdir = 1
 
@@ -154,6 +168,7 @@ let g:vimwiki_dir_link = 'index'
 
 Plug 'fatih/vim-go', { 'for': 'go' }
 let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
 " Plug 'nsf/gocode', { 'rtp': g:editor, 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
 
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
@@ -168,15 +183,18 @@ let g:pymode_lint_checkers = ['pyflakes']
 let g:pymode_run_bind = '<LocalLeader>r'
 let g:pymode_breakpoint_bind = '<LocalLeader>b'
 
-Plug 'alvan/vim-closetag', {'for': ['html', 'xml', 'htmldjango', 'vue']}
+Plug 'alvan/vim-closetag'
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
 
+Plug 'calebeby/ncm-css'
 " Plug 'posva/vim-vue'
 Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'othree/yajs.vim', {'for': ['javascript'], 'tag': '1.6'}
 " Plug 'neoclide/vim-jsx-improve'
-Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+" Plug 'maxmellon/vim-jsx-pretty'
 autocmd BufRead,BufNewFile *.vue,*.wpy setf javascript.jsx
 
 Plug 'vim-scripts/po.vim--Jelenak', {'for': 'po'}
@@ -198,6 +216,7 @@ set fillchars="fold: "
 " hi ColorColumn guibg=#262626 ctermbg=235
 
 Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-j>"
 Plug 'honza/vim-snippets'
 
 call plug#end()
@@ -209,7 +228,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 nmap <Leader><Leader> V
-nmap <Leader>b :make<CR>
 nnoremap <Leader><Tab> <C-^>
 nnoremap <Leader>y :!annotate expand('%:p') " what?
 
@@ -227,12 +245,14 @@ nnoremap <Leader>g gf
 " Remove trailing whitespaces
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
-nnoremap <F1> :CtrlPBuffer<CR>
-nnoremap <F2> :CtrlP<CR>
-nnoremap <F3> :TagbarToggle<CR>
-nnoremap <F4> :NERDTreeToggle<CR>
+" nnoremap <F1> :CtrlPBuffer<CR>
+" nnoremap <F2> :CtrlP<CR>
+nnoremap <F1> :LeaderfBuffer<CR>
+nnoremap <F2> :LeaderfFile<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :TagbarToggle<CR>
 nnoremap <F5> :Ranger<CR>
-nnoremap <Leader><Tab> :b#<CR>
+" nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 
 nnoremap H 0

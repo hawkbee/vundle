@@ -6,6 +6,7 @@ export MANPATH=/usr/local/opt/coreutils/libexec/gnubin:$MANPATH
 export TERM="rxvt-256color"
 export LANG=zh_CN.UTF-8
 export ZLS_COLORS=${LS_COLORS}
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
 export WORKON_HOME=~/.virtualenvs
 export GOPATH=~/go:~/cloud/rcloud/goClient
 

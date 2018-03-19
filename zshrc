@@ -45,5 +45,5 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 eval `dircolors ~/.dircolors`
-alias ls="ls -F --color=auto"
+# alias ls="ls -F --color=auto"
 # alias emacs="emacs -nw"
