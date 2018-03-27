@@ -44,6 +44,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-eval `dircolors ~/.dircolors`
+which dircolors >&- && eval `dircolors ~/.vim/dircolors.256dark`
 # alias ls="ls -F --color=auto"
 # alias emacs="emacs -nw"
