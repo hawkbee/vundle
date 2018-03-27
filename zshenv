@@ -10,5 +10,5 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
 export WORKON_HOME=~/.virtualenvs
 export GOPATH=~/go:~/cloud/rcloud/goClient
 
-#export http_proxy=http://127.0.0.1:8118
-#export https_proxy=http://127.0.0.1:8118
+# export http_proxy=http://127.0.0.1:8118
+# export https_proxy=http://127.0.0.1:8118

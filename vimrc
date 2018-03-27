@@ -46,6 +46,19 @@ Plug 'roxma/nvim-cm-tern', {'for': ['javascript'], 'do': 'npm install'}
 " Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
 " Plug 'roxma/ncm-flow', {'for': ['javascript']}
 
+" Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'sh install.sh'}
+
+" \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+" \ 'javascript': ['javascript-typescript-stdio'],
+" \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+let g:LanguageClient_serverCommands = {
+      \ 'javascript.jsx': ['vls'],
+      \ 'javascript': ['typescript-language-server', '--stdio'],
+      \ }
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> gr :call LanguageClient_textDocument_rename()<CR>
+
 if executable('gtags')
 Plug 'whatot/gtags-cscope.vim'
 let g:Gtags_Auto_Update = 1
@@ -96,6 +109,7 @@ Plug 'fleischie/vim-styled-components'
 Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 map <Leader>pf :LeaderfFile<cr>
 map <Leader>bb :LeaderfBuffer<cr>
+let g:Lf_WorkingDirectoryMode = 'AF'
 
 " Plug 'Shougo/denite.nvim'
 " map <Leader>pf :Denite file<cr>
@@ -139,6 +153,8 @@ endif
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/peaksea'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -184,6 +200,7 @@ let g:pymode_run_bind = '<LocalLeader>r'
 let g:pymode_breakpoint_bind = '<LocalLeader>b'
 
 Plug 'alvan/vim-closetag'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.wpy'
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
 
 Plug 'calebeby/ncm-css'
@@ -257,9 +274,11 @@ nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 
 nnoremap H 0
 nnoremap L $
-
-silent! colorscheme wombat256mod
-silent! colorscheme solarized
+set t_Co=256
+" silent! colorscheme wombat256mod
+" silent! colorscheme solarized
+silent! colorscheme peaksea
+silent! colorscheme molokai
 set background=light
 set wildmenu
 set encoding=utf-8

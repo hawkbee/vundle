@@ -24,7 +24,7 @@ if has('syntax')
 endif
 
 " Autoindent when starting new line, or using `o` or `O`.
-" set autoindent
+set autoindent
 set cindent
 
 " Allow backspace in insert mode.
