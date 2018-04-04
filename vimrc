@@ -172,6 +172,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
+Plug 'artur-shaik/vim-javacomplete2'
+let g:JavaComplete_InsertImports = 0
+
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 let g:rustfmt_autosave = 1
 Plug 'racer-rust/vim-racer', {'for': 'rust'}
@@ -215,6 +218,8 @@ Plug 'mxw/vim-jsx'
 autocmd BufRead,BufNewFile *.vue,*.wpy setf javascript.jsx
 
 Plug 'vim-scripts/po.vim--Jelenak', {'for': 'po'}
+
+Plug 'easymotion/vim-easymotion'
 
 " Nice column aligning with <Enter>
 Plug 'junegunn/vim-easy-align'
@@ -277,7 +282,7 @@ nnoremap L $
 set t_Co=256
 " silent! colorscheme wombat256mod
 " silent! colorscheme solarized
-silent! colorscheme peaksea
+" silent! colorscheme peaksea
 silent! colorscheme molokai
 set background=light
 set wildmenu
