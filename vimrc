@@ -148,6 +148,8 @@ let g:ranger_map_keys = 0
 map <leader>ar :Ranger<CR>
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
+else
+map <leader>ar :NERDTree<CR>
 endif
 
 
@@ -273,7 +275,6 @@ nnoremap <F1> :LeaderfBuffer<CR>
 nnoremap <F2> :LeaderfFile<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :TagbarToggle<CR>
-nnoremap <F5> :Ranger<CR>
 " nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 
