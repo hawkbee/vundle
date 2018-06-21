@@ -13,7 +13,7 @@
 	df = diff
 	gi = "!gi() { curl http://www.gitignore.io/api/$@ ;}; gi"
 [push]
-	default = simple
+	default = upstream
 [diff]
 	renameLimit = 100000
 	tool = vimdiff

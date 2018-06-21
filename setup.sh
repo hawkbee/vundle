@@ -30,7 +30,7 @@ fi
 
 if [ ! -d ~/.oh-my-zsh ]; then
   while [ true ]; do
-    echo "Do you use bash(bash_it)?[Y/N]"
+    echo "Do you use zsh(oh-my-zsh)?[Y/N]"
     read REPLY
     case $REPLY in
       [Yy])
@@ -48,11 +48,14 @@ fi
 
 if [ ! -d ~/.emacs.d ]; then
   while [ true ]; do
-    echo "Do you use bash(bash_it)?[Y/N]"
+    echo "Do you use doom emacs?[Y/N]"
     read REPLY
     case $REPLY in
       [Yy])
-        git clone https://github.com/syl20bnr/spacemacs.git  ~/.emacs.d
+        # git clone https://github.com/syl20bnr/spacemacs.git  ~/.emacs.d
+        git clone https://github.com/hlissner/.emacs.d ~/.emacs.d
+        mkdir -p ~/.config
+        ln -s ~/.vim/doom ~/.config/doom
         break
         ;;
       [Nn])

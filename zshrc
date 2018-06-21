@@ -3,6 +3,7 @@
 
 ZSH=$HOME/.oh-my-zsh
 
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -38,7 +39,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(virtualenvwrapper sudo extract z tmux git git-extras gitignore osx brew brew-cask nvm emacs)
+plugins=(virtualenvwrapper sudo extract z git git-extras gitignore osx brew brew-cask nvm emacs)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -47,3 +48,8 @@ source $ZSH/oh-my-zsh.sh
 which dircolors >&- && eval `dircolors ~/.vim/dircolors.256dark`
 # alias ls="ls -F --color=auto"
 # alias emacs="emacs -nw"
+
+proxyon() {
+  export http_proxy=http://172.16.1.1:8118
+  export https_proxy=http://172.16.1.1:8118
+}
