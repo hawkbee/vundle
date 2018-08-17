@@ -35,16 +35,15 @@ else
   Plug 'scrooloose/syntastic'
 endif
 
-Plug 'roxma/nvim-completion-manager'
-if !has('nvim')
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-pyclang'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/ncm2-tern', {'for': ['javascript'], 'do': 'npm install'}
 Plug 'Shougo/neco-syntax'
-Plug 'fgrsnau/ncm-otherbuf'
-Plug 'roxma/ncm-clang', {'for': ['c', 'cpp']}
-Plug 'roxma/nvim-cm-tern', {'for': ['javascript'], 'do': 'npm install'}
-" Plug 'roxma/nvim-cm-racer', {'for': 'rust'}
-" Plug 'roxma/ncm-flow', {'for': ['javascript']}
+Plug 'ncm2/ncm2-syntax'
 
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'sh install.sh'}
 
@@ -195,7 +194,9 @@ let g:go_fmt_fail_silently = 1
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 let g:jedi#completions_command = "<C-N>"
 let g:jedi#rename_command = ""
+if executable('yapf')
 autocmd Filetype python setlocal equalprg=yapf
+endif
 autocmd FileType python nmap gd :call jedi#goto()<CR>
 
 Plug 'klen/python-mode', { 'branch': 'develop'}
