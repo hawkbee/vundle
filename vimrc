@@ -24,6 +24,9 @@ Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
+nnoremap <leader> :<C-U>LeaderGuide ' '<CR>
+nnoremap <localleader> :<C-U>LeaderGuide ','<CR>
+Plug 'hecal3/vim-leader-guide'
 Plug 'Yggdroot/indentLine'
 
 " Ack
@@ -106,8 +109,6 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'fleischie/vim-styled-components'
 
 Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
-map <Leader>pf :LeaderfFile<cr>
-map <Leader>bb :LeaderfBuffer<cr>
 let g:Lf_WorkingDirectoryMode = 'AF'
 
 " Plug 'Shougo/denite.nvim'
