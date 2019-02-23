@@ -7,7 +7,7 @@ let maplocalleader = ","
 let g:flow#enable = 0
 
 let g:has_async = v:version >= 800 || has('nvim')
-let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
+" let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.virtualenvs/neovim/bin/python'
 let $RUST_SRC_PATH = $HOME . '/cloud/devel/rust/src'
 
@@ -24,56 +24,86 @@ Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
-nnoremap <leader> :<C-U>LeaderGuide ' '<CR>
-nnoremap <localleader> :<C-U>LeaderGuide ','<CR>
-Plug 'hecal3/vim-leader-guide'
+Plug 'liuchengxu/vim-which-key'
+nnoremap <silent> <leader> :<C-U>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<C-U>WhichKey ','<CR>
+
+Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
+let g:Lf_WorkingDirectoryMode = 'AF'
+let g:Lf_CommandMap = {'<ESC>': ['<ESC>', '<C-G>']}
 Plug 'Yggdroot/indentLine'
 
 " Ack
 Plug 'mileszs/ack.vim'
 
 if g:has_async
-  Plug 'w0rp/ale'
+  " Plug 'w0rp/ale'
+  Plug 'neomake/neomake'
+
+  " let linter = neomake#makers#ft#c#clang()
+  " function linter.fn(jobinfo) abort
+    " let maker = copy(self)
+    " if filereadable('.clang_complete')
+      " let maker.args += split(join(readfile('.clang_complete'), "\n"))
+    " endif
+    " return maker
+  " endfunction
+  " let g:neomake_c_clang_maker_args = linter
 else
   Plug 'scrooloose/syntastic'
 endif
 
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-tern', {'for': ['javascript'], 'do': 'npm install'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+end
 Plug 'Shougo/neco-syntax'
-Plug 'ncm2/ncm2-syntax'
+Plug 'Shougo/deoplete-clangx'
+Plug 'zchee/deoplete-jedi'
+Plug 'ozelentok/deoplete-gtags'
+let g:deoplete#enable_at_startup = 1
+
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-pyclang'
+" Plug 'ncm2/ncm2-jedi'
+" Plug 'ncm2/ncm2-tern', {'for': ['javascript'], 'do': 'npm install'}
+" Plug 'Shougo/neco-syntax'
+" Plug 'ncm2/ncm2-syntax'
+
+" autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
 
 " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'sh install.sh'}
 
 " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 " \ 'javascript': ['javascript-typescript-stdio'],
 " \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
-let g:LanguageClient_serverCommands = {
-      \ 'javascript.jsx': ['vls'],
-      \ 'javascript': ['typescript-language-server', '--stdio'],
-      \ }
+" let g:LanguageClient_serverCommands = {
+      " \ 'javascript.jsx': ['vls'],
+      " \ 'javascript': ['typescript-language-server', '--stdio'],
+      " \ }
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 " nnoremap <silent> gr :call LanguageClient_textDocument_rename()<CR>
 
 if executable('gtags')
-Plug 'whatot/gtags-cscope.vim'
-let g:Gtags_Auto_Update = 1
-let g:GtagsCscope_Auto_Load = 1
-let g:GtagsCscope_Quiet = 1
-let g:Gtags_Use_Tags_Format = 1
-map <C-\>c:cs find c <C-R>=expand("<cword>")<CR><CR>
-set cscopetag
+  Plug 'whatot/gtags-cscope.vim'
+  let g:Gtags_Auto_Update = 1
+  let g:GtagsCscope_Auto_Load = 1
+  let g:GtagsCscope_Quiet = 1
+  let g:Gtags_Use_Tags_Format = 1
+  map <C-\>c:cs find c <C-R>=expand("<cword>")<CR><CR>
+  set cscopetag
 endif
 
 " Really nice prompt
 " if !exists('g:airline_symbols')
-  " let g:airline_symbols = {}
+" let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.linenr = '¶'
 " let g:airline_powerline_fonts = 1
@@ -99,17 +129,36 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'rhysd/conflict-marker.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'fleischie/vim-styled-components'
+Plug 'sbdchd/neoformat'
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
-Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
-let g:Lf_WorkingDirectoryMode = 'AF'
+let g:neoformat_lua_luafmt = {
+      \ 'exe': 'luafmt',
+      \ 'args': ['-i 2', '-l 99'],
+      \ 'replace': 1,
+      \ 'stdin': 1,
+      \ 'valid_exit_codes': [0, 23],
+      \ 'no_append': 1,
+      \ }
+let g:neoformat_enabled_lua = ['luafmt']
+
+let g:neoformat_enabled_python = ['black', 'autopep8','yapf']
+let g:neoformat_basic_format_trim = 1
+" Plug 'Chiel92/vim-autoformat'
+" let g:autoformat_autoindent = 0
+" let g:autoformat_retab = 0
+" let g:formatters_python = ['black', 'autopep8','yapf']
+" autocmd BufWrite * :Autoformat
+Plug 'fleischie/vim-styled-components'
 
 " Plug 'Shougo/denite.nvim'
 " map <Leader>pf :Denite file<cr>
@@ -120,9 +169,9 @@ let g:Lf_WorkingDirectoryMode = 'AF'
 
 "Editorconfig
 if executable('editorconfig') && has('python')
-Plug 'editorconfig/editorconfig-vim'
+  Plug 'editorconfig/editorconfig-vim'
 else
-Plug 'sgur/vim-editorconfig'
+  Plug 'sgur/vim-editorconfig'
 endif
 
 Plug 'scrooloose/nerdtree'
@@ -139,17 +188,17 @@ let g:tagbar_autofocus = 1
 
 " Ranger
 if executable('ranger')
-if has('nvim')
-Plug 'rbgrouleff/bclose.vim'
-map <Leader>bd :Bclose<cr>
-endif
-Plug 'francoiscabrol/ranger.vim'
-let g:ranger_map_keys = 0
-map <leader>ar :Ranger<CR>
-let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
+  if has('nvim')
+    Plug 'rbgrouleff/bclose.vim'
+    map <Leader>bd :Bclose<cr>
+  endif
+  Plug 'francoiscabrol/ranger.vim'
+  let g:ranger_map_keys = 0
+  map <leader>op :Ranger<CR>
+  let g:NERDTreeHijackNetrw = 0
+  let g:ranger_replace_netrw = 1
 else
-map <leader>ar :NERDTree<CR>
+  map <leader>op :NERDTree<CR>
 endif
 
 
@@ -157,6 +206,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/peaksea'
 Plug 'tomasr/molokai'
 Plug 'morhetz/gruvbox'
+Plug 'jnurmine/Zenburn'
+Plug 'ajh17/spacegray.vim'
+Plug 'dracula/vim'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -195,22 +247,17 @@ let g:go_fmt_fail_silently = 1
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 let g:jedi#completions_command = "<C-N>"
 let g:jedi#rename_command = ""
-if executable('yapf')
-autocmd Filetype python setlocal equalprg=yapf
-endif
-autocmd FileType python nmap gd :call jedi#goto()<CR>
-
 Plug 'klen/python-mode', { 'branch': 'develop'}
 let g:pymode_rope = 0
 let g:pymode_lint_checkers = ['pyflakes']
 let g:pymode_run_bind = '<LocalLeader>r'
 let g:pymode_breakpoint_bind = '<LocalLeader>b'
+let g:pymode_options_max_line_length = 99
 
 Plug 'alvan/vim-closetag'
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.wpy'
 Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
 
-Plug 'calebeby/ncm-css'
 " Plug 'posva/vim-vue'
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -247,6 +294,16 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
+
+let g:neomake_open_list = 1
+call neomake#configure#automake('w')
+function! CustomNeomakeC(jobinfo) abort dict
+  if filereadable('.clang_complete') && self.exe == "clang"
+    let self.args += split(join(readfile('.clang_complete'), "\n"))
+  endif
+endfunction
+call neomake#config#set('ft.c.InitForJob', function('CustomNeomakeC'))
+
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -279,6 +336,7 @@ nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :TagbarToggle<CR>
 " nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
+nnoremap <Leader>, :LeaderfBuffer<CR>
 
 nnoremap H 0
 nnoremap L $
@@ -286,7 +344,8 @@ set t_Co=256
 " silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
-silent! colorscheme molokai
+" silent! colorscheme molokai
+colorscheme dracula
 set background=light
 set wildmenu
 set encoding=utf-8
@@ -296,6 +355,8 @@ set fileencodings=ucs-bom,utf-8,cp936,gbk,gb18030,big5,latin1
 set fileformat=unix
 set fileformats=unix,dos,mac
 set autoread
+set timeoutlen=300
+set ttimeoutlen=0
 
 " Automatically open, but do not go to (if there are errors) the quickfix /
 " location list window, or close it when is has become empty.

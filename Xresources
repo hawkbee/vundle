@@ -1,14 +1,17 @@
-#include ".vim/Xresources.dark"
+! #include ".vim/raven.dark"
+#include ".vim/dracula.dark"
 
-! URxvt.font: xft:WenQuanYi MicroHei Mono-12
-! URxvt.font: xft:PowerlineSymbols,xft:Noto Sans Mono CJK SC-12
-! URxvt.font: xft:Source Code Pro:size=15,xft:DejaVu Sans Mono for Powerline:size=15,xft:WenQuanYi MicroHei Mono:size=15,xft:Noto Mono:size=15
+URxvt.font: xft:Consolas:pixelsize=22:antialias=true, xft:SauceCodePro Nerd Font Mono:pixelsize=20:antialias=true, xft:Source Code Pro:pixelsize=20:antialias=true
+! URxvt.font: xft:Source Code Pro:pixelsize=20:antialias=true, xft:SauceCodePro Nerd Font Mono:pixelsize=20:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:antialias=true, xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true
+! URxvt.font: xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:antialias=true
+URxvt.boldFont: xft:Consolas:pixelsize=22:antialias=true, xft:WenQuanYi Micro Hei Mono:pixelsize=20:Bold:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:Bold:antialias=true
 
-URxvt.font: xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:size=15,xft:WenQuanYi MicroHei Mono:size=15,xft:Noto Mono:size=15
-URxvt.letterspace: -5
+URxvt.letterspace: -1
 URxvt.intensityStyles: false
 URxvt.saveLines: 20000
 
+! St.background: #cdefcd
+! St.foreground: #111221
 ! *.background: #111313
 ! *.foreground: #abaeb3
 URxvt*depth:32

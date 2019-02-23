@@ -19,7 +19,7 @@
 	tool = vimdiff
 	algorithm = histogram
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.vim/gitignore
 [bash-it]
 	hide-status = 1

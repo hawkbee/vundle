@@ -1,0 +1,20 @@
+---
+# LLVM, Google, Chromium, Mozilla, WebKit
+BasedOnStyle:  WebKit
+ColumnLimit:     99
+---
+# None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
+Language:        Cpp
+# BasedOnStyle:  LLVM
+BreakBeforeBraces: Linux
+Cpp11BracedListStyle: false
+IndentWidth:     8
+SortIncludes:	 false
+UseTab:          Always
+---
+# None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
+Language:        JavaScript
+# BasedOnStyle:  LLVM
+IndentWidth:     2
+TabWidth:        2
+UseTab:          Never
