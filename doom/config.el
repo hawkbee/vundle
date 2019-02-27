@@ -5,7 +5,7 @@
  ;; doom-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
  doom-serif-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
  ;; doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 22)
- doom-font (font-spec :family "Consolas" :size 22)
+ doom-font (font-spec :family "Consolas" :size 24)
  ;; doom-font (font-spec :family "Noto Sans Mono Light" :size 18)
  +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode) ; elisp's mechanisms are good enough
  +pretty-code-enabled-modes '(emacs-lisp-mode org-mode))
@@ -24,6 +24,7 @@
 (delete-selection-mode)
 (setq select-enable-clipboard t)
 (setq format-all-debug t)
+(setq +lookup-open-url-fn 'eww)
 
 (map!
  :n "C-h" #'evil-window-left
