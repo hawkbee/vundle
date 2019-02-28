@@ -294,8 +294,9 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
-
-let g:neomake_open_list = 1
+" let g:neomake_logfile = '/tmp/neomake.log'
+let g:neomake_c_enabled_makers = ['clang']
+let g:neomake_open_list = 2
 call neomake#configure#automake('w')
 function! CustomNeomakeC(jobinfo) abort dict
   if filereadable('.clang_complete') && self.exe == "clang"
@@ -341,11 +342,11 @@ nnoremap <Leader>, :LeaderfBuffer<CR>
 nnoremap H 0
 nnoremap L $
 set t_Co=256
-" silent! colorscheme wombat256mod
+silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
 " silent! colorscheme molokai
-colorscheme dracula
+" colorscheme dracula
 set background=light
 set wildmenu
 set encoding=utf-8

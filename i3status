@@ -1,0 +1,33 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 2
+}
+
+order += "disk /"
+order += "ethernet enp0s3"
+order += "ethernet enp0s8"
+order += "load"
+order += "tztime local"
+
+disk "/" {
+  format = "Disk: %free"
+}
+
+ethernet enp0s3 {
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
+
+ethernet enp0s8 {
+  format_up = "E: %ip (%speed)"
+  format_down = "E: down"
+}
+
+load {
+  format = "Load: %5min"
+}
+
+tztime local {
+  format = "%Y-%m-%d %H:%M:%S"
+}
