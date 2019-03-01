@@ -7,8 +7,8 @@
   :config
   (setq counsel-gtags-auto-update t)
   (set-lookup-handlers! '(c-mode c++-mode)
-    :definition #'counsel-gtags-dwim
-    ;; :definition #'counsel-gtags-find-definition
+    ;; :definition #'counsel-gtags-dwim
+    :definition #'counsel-gtags-find-definition
     :documentation #'+default/man-or-woman
     :references #'counsel-gtags-find-reference))
 
@@ -18,6 +18,11 @@
   (add-hook 'c-mode-common-hook 'helm-gtags-mode)
   :config
   (set-lookup-handlers! '(c-mode c++-mode)
-    :definition #'helm-gtags-dwim
+    ;; :definition #'helm-gtags-dwim
+    :definition #'helm-gtags-find-definition
     :documentation #'+default/man-or-woman
     :references #'counsel-gtags-find-reference))
+
+(add-hook! 'c-mode-common-hook
+  (set-company-backend! 'c-mode
+    '(:separate company-irony-c-headers company-irony company-gtags)))

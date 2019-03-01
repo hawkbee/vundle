@@ -194,12 +194,11 @@ if executable('ranger')
   endif
   Plug 'francoiscabrol/ranger.vim'
   let g:ranger_map_keys = 0
-  map <leader>op :Ranger<CR>
+  map <leader>o- :Ranger<CR>
   let g:NERDTreeHijackNetrw = 0
   let g:ranger_replace_netrw = 1
-else
-  map <leader>op :NERDTree<CR>
 endif
+map <leader>op :NERDTree<CR>
 
 
 Plug 'altercation/vim-colors-solarized'
