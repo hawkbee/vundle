@@ -43,18 +43,20 @@ plugins=(colored-man-pages git git-extras gitignore nvm emacs httpie virtualenvw
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+if ! which -s vim &>/dev/null && which -s nvim &>/dev/null; then
+  alias vim="nvim"
+  alias vimdiff="nvim -d"
+fi
 
-alias vim="nvim"
-alias vimdiff="nvim -d"
-alias cat="bat"
-which dircolors >&- && eval `dircolors ~/.vim/dircolors.256dark`
-unalias l
-unalias ls
-ls() {
-  # /usr/bin/ls -F --color=always $@ | bat
-  /usr/bin/exa --color=always $@ | bat
-}
-alias l="ls -l -G"
+which -s bat &>/dev/null && alias cat="bat"
+which -s dircolors &>/dev/null && eval `dircolors ~/.vim/dircolors.256dark`
+if which -s exa &>/dev/null; then
+  unalias ls
+  ls() {
+    # /usr/bin/ls -F --color=always $@ | bat
+    /usr/bin/exa --color=always $@ | bat
+  }
+fi
 # alias emacs="emacs -nw"
 # [ "${TERM/rxvt}" != "${TERM}" ] && export BAT_THEME="Monokai Extended Light" && alias ssh="TERM=xterm-256color ssh"
 [ "${TERM/rxvt}" != "${TERM}" ] && alias ssh="TERM=xterm-256color ssh"
