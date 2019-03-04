@@ -48,15 +48,10 @@ if ! which -s vim &>/dev/null && which -s nvim &>/dev/null; then
   alias vimdiff="nvim -d"
 fi
 
-which -s bat &>/dev/null && alias cat="bat"
+# which -s bat &>/dev/null && alias cat="bat"
 which -s dircolors &>/dev/null && eval `dircolors ~/.vim/dircolors.256dark`
-if which -s exa &>/dev/null; then
-  unalias ls
-  ls() {
-    # /usr/bin/ls -F --color=always $@ | bat
-    /usr/bin/exa --color=always $@ | bat
-  }
-fi
+# which -s exa &>/dev/null && alias ls="/usr/bin/exa --color=always"
+
 # alias emacs="emacs -nw"
 # [ "${TERM/rxvt}" != "${TERM}" ] && export BAT_THEME="Monokai Extended Light" && alias ssh="TERM=xterm-256color ssh"
 [ "${TERM/rxvt}" != "${TERM}" ] && alias ssh="TERM=xterm-256color ssh"

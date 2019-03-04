@@ -208,6 +208,7 @@ Plug 'morhetz/gruvbox'
 Plug 'jnurmine/Zenburn'
 Plug 'ajh17/spacegray.vim'
 Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
 
 " Allow to :Rename files
 Plug 'danro/rename.vim'
@@ -334,14 +335,15 @@ nnoremap <F1> :LeaderfBuffer<CR>
 nnoremap <F2> :LeaderfFile<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :TagbarToggle<CR>
-" nnoremap <Leader><Tab> :b#<CR>
+nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 nnoremap <Leader>, :LeaderfBuffer<CR>
 
 nnoremap H 0
 nnoremap L $
 set t_Co=256
-silent! colorscheme wombat256mod
+silent! colorscheme onedark
+" silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
 " silent! colorscheme molokai
