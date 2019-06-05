@@ -2,14 +2,24 @@
 
 (def-package! counsel-gtags
   :when (featurep! :completion ivy)
+  :defer t
   :init
   (add-hook 'c-mode-common-hook 'counsel-gtags-mode)
   :config
+  (counsel-gtags-mode)
+  (setq counsel-gtags-ignore-case t)
+  ;; (setq counsel-gtags-use-suggested-key-map t)
   (setq counsel-gtags-auto-update t)
+  (setq counsel-gtags-custom-dwim (lambda () (call-interactively #'counsel-gtags-dwim)))
+  (setq counsel-gtags-custom-refer (lambda () (call-interactively #'counsel-gtags-find-reference)))
+  (with-eval-after-load 'evil-maps
+    (define-key evil-motion-state-map (kbd "C-]") 'counsel-gtags-dwim)
+    (define-key evil-motion-state-map (kbd "C-o") 'counsel-gtags-go-backward))
   (set-lookup-handlers! '(c-mode c++-mode)
     ;; :definition #'counsel-gtags-dwim
-    :definition #'counsel-gtags-find-definition
-    :documentation #'+default/man-or-woman
+    :definition #'counsel-gtags-dwim
+    ;; :definition #'counsel-gtags-find-definition
+    ;; :documentation #'+default/man-or-woman
     :references #'counsel-gtags-find-reference))
 
 (def-package! helm-gtags

@@ -26,6 +26,8 @@
 (setq format-all-debug t)
 (setq +lookup-open-url-fn 'eww)
 
+;; (set-company-backend! '(c-mode c++-mode) '(company-gtags company-dabbrev-code company-irony))
+
 (map!
  :n "C-h" #'evil-window-left
  :n "C-j" #'evil-window-down
