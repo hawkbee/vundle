@@ -9,4 +9,5 @@ export ZLS_COLORS=${LS_COLORS}
 # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
 # export WORKON_HOME=~/.virtualenvs
 export GOPATH=~/go
+export RUST_SRC_PATH=~/rust/rust/src
 #export GOPATH=~/go:~/cloud/rcloud/goClient
