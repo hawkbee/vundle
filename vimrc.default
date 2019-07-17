@@ -49,9 +49,9 @@ set ttimeoutlen=100
 set incsearch
 
 " Indent using two spaces.
-set tabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=2
+" set shiftwidth=2
+" set expandtab
 
 " Use `Ctrl-L` to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>

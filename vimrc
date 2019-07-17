@@ -18,7 +18,7 @@ source ~/.vim/vimrc.default
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['javascript', 'jsx', 'css']
+" let g:polyglot_disabled = ['javascript', 'jsx']
 
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
@@ -31,7 +31,7 @@ nnoremap <silent> <localleader> :<C-U>WhichKey ','<CR>
 Plug 'Yggdroot/LeaderF', {'do': './install.sh'}
 let g:Lf_WorkingDirectoryMode = 'AF'
 let g:Lf_CommandMap = {'<ESC>': ['<ESC>', '<C-G>']}
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 " Ack
 Plug 'mileszs/ack.vim'
@@ -53,18 +53,18 @@ else
   Plug 'scrooloose/syntastic'
 endif
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-end
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/deoplete-clangx'
-Plug 'zchee/deoplete-jedi'
-Plug 'ozelentok/deoplete-gtags'
-let g:deoplete#enable_at_startup = 1
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" end
+" Plug 'Shougo/neco-syntax'
+" Plug 'Shougo/deoplete-clangx'
+" Plug 'zchee/deoplete-jedi'
+" Plug 'ozelentok/deoplete-gtags'
+" let g:deoplete#enable_at_startup = 1
 
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -117,30 +117,36 @@ endif
 Plug 'itchyny/lightline.vim'
 set laststatus=2
 
-Plug 'jparise/vim-graphql'
+" Plug 'jparise/vim-graphql'
 "
 " " Press v over and over again to expand selection
-Plug 'terryma/vim-expand-region'
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+" Plug 'terryma/vim-expand-region'
+" vmap v <Plug>(expand_region_expand)
+" vmap <C-v> <Plug>(expand_region_shrink)
 
 " Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-rsi'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-rsi'
+" Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-sleuth'
+" let g:sleuth_automatic = 1
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-unimpaired'
 
-Plug 'jiangmiao/auto-pairs'
-Plug 'rhysd/conflict-marker.vim'
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'rhysd/conflict-marker.vim'
 Plug 'sbdchd/neoformat'
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+  " autocmd!
+  " autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
+let g:neoformat_sh_shfmt = {
+      \ 'exe': 'shfmt',
+      \ 'stdin': 1,
+      \ 'no_append': 1,
+      \ }
 let g:neoformat_lua_luafmt = {
       \ 'exe': 'luafmt',
       \ 'args': ['-i 2', '-l 99'],
@@ -153,12 +159,13 @@ let g:neoformat_enabled_lua = ['luafmt']
 
 let g:neoformat_enabled_python = ['black', 'autopep8','yapf']
 let g:neoformat_basic_format_trim = 1
+" let g:neoformat_verbose = 1
 " Plug 'Chiel92/vim-autoformat'
 " let g:autoformat_autoindent = 0
 " let g:autoformat_retab = 0
 " let g:formatters_python = ['black', 'autopep8','yapf']
 " autocmd BufWrite * :Autoformat
-Plug 'fleischie/vim-styled-components'
+" Plug 'fleischie/vim-styled-components'
 
 " Plug 'Shougo/denite.nvim'
 " map <Leader>pf :Denite file<cr>
@@ -211,9 +218,9 @@ Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
 
 " Allow to :Rename files
-Plug 'danro/rename.vim'
+" Plug 'danro/rename.vim'
 
-Plug 'flowtype/vim-flow'
+" Plug 'flowtype/vim-flow'
 
 " Automatically find root project directory
 Plug 'airblade/vim-rooter'
@@ -222,63 +229,64 @@ let g:rooter_disable_map = 1
 let g:rooter_silent_chdir = 1
 
 " Expand / wrap hashes etc.
-Plug 'AndrewRadev/splitjoin.vim'
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+" Plug 'AndrewRadev/splitjoin.vim'
+" nmap sj :SplitjoinSplit<cr>
+" nmap sk :SplitjoinJoin<cr>
 
-Plug 'artur-shaik/vim-javacomplete2'
-let g:JavaComplete_InsertImports = 0
+" Plug 'artur-shaik/vim-javacomplete2'
+" let g:JavaComplete_InsertImports = 0
 
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-let g:rustfmt_autosave = 1
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
-autocmd FileType rust nmap gd <Plug>(rust-def)
+" Plug 'rust-lang/rust.vim', {'for': 'rust'}
+" let g:rustfmt_autosave = 1
+" Plug 'racer-rust/vim-racer', {'for': 'rust'}
+" autocmd FileType rust nmap gd <Plug>(rust-def)
 
-Plug 'tpope/vim-speeddating', {'for': ['markdown', 'vimwiki']}
-Plug 'jceb/vim-orgmode', {'for': 'org'}
-Plug 'vimwiki/vimwiki', {'for': 'vimwiki'}
-let g:vimwiki_dir_link = 'index'
+" Plug 'tpope/vim-speeddating', {'for': ['markdown', 'vimwiki']}
+" Plug 'jceb/vim-orgmode', {'for': 'org'}
+" Plug 'vimwiki/vimwiki', {'for': 'vimwiki'}
+" let g:vimwiki_dir_link = 'index'
 
-Plug 'fatih/vim-go', { 'for': 'go' }
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
+" Plug 'fatih/vim-go', { 'for': 'go' }
+" let g:go_fmt_command = "goimports"
+" let g:go_fmt_fail_silently = 1
 " Plug 'nsf/gocode', { 'rtp': g:editor, 'do': '~/.vim/plugged/gocode/vim/symlink.sh', 'for': 'go' }
 
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
-let g:jedi#completions_command = "<C-N>"
-let g:jedi#rename_command = ""
-Plug 'klen/python-mode', { 'branch': 'develop'}
-let g:pymode_rope = 0
-let g:pymode_lint_checkers = ['pyflakes']
-let g:pymode_run_bind = '<LocalLeader>r'
-let g:pymode_breakpoint_bind = '<LocalLeader>b'
-let g:pymode_options_max_line_length = 99
+" Plug 'davidhalter/jedi-vim', {'for': 'python'}
+" let g:jedi#completions_command = "<C-N>"
+" let g:jedi#rename_command = ""
+" Plug 'klen/python-mode', { 'branch': 'develop'}
+" let g:pymode_rope = 0
+" let g:pymode_lint_checkers = ['pyflakes']
+" let g:pymode_run_bind = '<LocalLeader>r'
+" let g:pymode_breakpoint_bind = '<LocalLeader>b'
+" let g:pymode_options_max_line_length = 99
 
-Plug 'alvan/vim-closetag'
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.wpy'
-Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
+" Plug 'alvan/vim-closetag'
+" let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.wpy'
+" Plug 'mattn/emmet-vim', {'for': ['html', 'xml', 'xslt']}
 
 " Plug 'posva/vim-vue'
-Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'moll/vim-node', { 'for': 'javascript' }
+" Plug 'othree/javascript-libraries-syntax.vim'
 " Plug 'othree/yajs.vim', {'for': ['javascript'], 'tag': '1.6'}
 " Plug 'neoclide/vim-jsx-improve'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
 " Plug 'maxmellon/vim-jsx-pretty'
-autocmd BufRead,BufNewFile *.vue,*.wpy setf javascript.jsx
+" autocmd BufRead,BufNewFile *.vue,*.wpy setf javascript.jsx
+" autocmd FileType vue syntax sync fromstart
 
-Plug 'vim-scripts/po.vim--Jelenak', {'for': 'po'}
+" Plug 'vim-scripts/po.vim--Jelenak', {'for': 'po'}
 
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
 " Nice column aligning with <Enter>
-Plug 'junegunn/vim-easy-align'
-vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
+" Plug 'junegunn/vim-easy-align'
+" vmap <Enter> <Plug>(EasyAlign)
+" nmap <Leader>a <Plug>(EasyAlign)
 
 " ii / ai
-Plug 'michaeljsmith/vim-indent-object'
+" Plug 'michaeljsmith/vim-indent-object'
 
 " For more reliable indenting and performance
 set foldmethod=indent
@@ -288,15 +296,15 @@ set fillchars="fold: "
 " execute "set colorcolumn=" . join(range(81,335), ',')
 " hi ColorColumn guibg=#262626 ctermbg=235
 
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-j>"
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" Plug 'honza/vim-snippets'
 
 call plug#end()
 
 " let g:neomake_logfile = '/tmp/neomake.log'
 let g:neomake_c_enabled_makers = ['clang']
-let g:neomake_open_list = 2
+" let g:neomake_open_list = 2
 call neomake#configure#automake('w')
 function! CustomNeomakeC(jobinfo) abort dict
   if filereadable('.clang_complete') && self.exe == "clang"
@@ -327,7 +335,7 @@ nnoremap <Leader>v V
 nnoremap <Leader>g gf
 
 " Remove trailing whitespaces
-nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+" nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 
 " nnoremap <F1> :CtrlPBuffer<CR>
 " nnoremap <F2> :CtrlP<CR>
@@ -338,17 +346,19 @@ nnoremap <F4> :TagbarToggle<CR>
 nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 nnoremap <Leader>, :LeaderfBuffer<CR>
+nnoremap <Leader><Space> :LeaderfFile<CR>
 
 nnoremap H 0
 nnoremap L $
 set t_Co=256
 silent! colorscheme onedark
+" silent! colorscheme gruvbox
 " silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
 " silent! colorscheme molokai
 " colorscheme dracula
-set background=light
+set background=dark
 set wildmenu
 set encoding=utf-8
 set termencoding=utf-8

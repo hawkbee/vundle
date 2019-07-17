@@ -7,7 +7,7 @@
  ;; doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 22)
  doom-font (font-spec :family "Consolas" :size 24)
  ;; doom-font (font-spec :family "Noto Sans Mono Light" :size 18)
- +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode) ; elisp's mechanisms are good enough
+ +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode markdown-mode gfm-mode) ; elisp's mechanisms are good enough
  +pretty-code-enabled-modes '(emacs-lisp-mode org-mode))
 
 (after! format-all
@@ -41,3 +41,6 @@
   ;; (:prefix "f"
    ;;  :description "" :n "t" #'nil))
  )
+
+(def-package! evil-matchit
+  :config (global-evil-matchit-mode 1))
