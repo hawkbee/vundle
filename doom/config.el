@@ -49,5 +49,5 @@
    ;;  :description "" :n "t" #'nil))
  )
 
-(def-package! evil-matchit
+(use-package! evil-matchit
   :config (global-evil-matchit-mode 1))
