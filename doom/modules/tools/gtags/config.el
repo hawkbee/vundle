@@ -1,6 +1,6 @@
 ;;; lang/cc/config.el -*- lexical-binding: t; -*-
 
-(def-package! counsel-gtags
+(use-package! counsel-gtags
   :when (featurep! :completion ivy)
   :defer t
   :init
@@ -22,7 +22,7 @@
     ;; :documentation #'+default/man-or-woman
     :references #'counsel-gtags-find-reference))
 
-(def-package! helm-gtags
+(use-package! helm-gtags
   :when (featurep! :completion helm)
   :init
   (add-hook 'c-mode-common-hook 'helm-gtags-mode)

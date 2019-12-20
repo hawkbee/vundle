@@ -8,7 +8,13 @@
  doom-font (font-spec :family "Consolas" :size 24)
  ;; doom-font (font-spec :family "Noto Sans Mono Light" :size 18)
  +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode markdown-mode gfm-mode) ; elisp's mechanisms are good enough
- +pretty-code-enabled-modes '(emacs-lisp-mode org-mode))
+ +pretty-code-enabled-modes '(emacs-lisp-mode org-mode)
+ package-archives
+ (let ((proto (if gnutls-verify-error "https" "http")))
+   `(("gnu"   . ,(concat proto "://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+     ("melpa" . ,(concat proto "://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+     ("org"   . ,(concat proto "://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))))
+
 
 (after! format-all
   (set-formatter! 'lua-fmt
@@ -22,7 +28,8 @@
 (add-to-list 'auto-mode-alist '("\\.wpy\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
 (delete-selection-mode)
-(setq select-enable-clipboard t)
+;; (setq select-enable-clipboard t)
+(setq select-enable-primary t)
 (setq format-all-debug t)
 (setq +lookup-open-url-fn 'eww)
 

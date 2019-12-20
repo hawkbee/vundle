@@ -343,6 +343,7 @@ nnoremap <F1> :LeaderfBuffer<CR>
 nnoremap <F2> :LeaderfFile<CR>
 nnoremap <F3> :NERDTreeToggle<CR>
 nnoremap <F4> :TagbarToggle<CR>
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>/ :Ack<Space><C-R><CR><CR>
 nnoremap <Leader>, :LeaderfBuffer<CR>

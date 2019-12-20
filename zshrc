@@ -42,22 +42,14 @@ plugins=(colored-man-pages git git-extras gitignore nvm emacs httpie virtualenvw
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-if ! which -s vim 2>&1 1>/dev/null && which -s nvim 2>&1 1>/dev/null; then
-  alias vim="nvim"
-  alias vimdiff="nvim -d"
-fi
-
 # which -s bat &>/dev/null && alias cat="bat"
 which -s dircolors 2>&1 1>/dev/null && eval `dircolors ~/.vim/dircolors.256dark`
 if which -s exa 2>&1 1>/dev/null && which -s bat 2>&1 1>/dev/null; then
-  # alias ls="/usr/bin/exa --color=always"
   unalias ls
-  function ls () {
-    /usr/bin/exa --color=always $@ | bat
-  }
+  alias ls="/usr/bin/exa --color=always"
   if ! type tree 2>&1 1>/dev/null ; then
-    alias tree='ls -T'
+    # alias tree='ls -T'
+    alias tree='ls --tree'
   fi
 fi
 
