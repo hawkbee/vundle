@@ -1,5 +1,7 @@
+! #include ".vim/solarized.dark"
+#include ".vim/solarized.light"
 ! #include ".vim/raven.dark"
-#include ".vim/dracula.dark"
+! #include ".vim/dracula.dark"
 
 URxvt.font: xft:Consolas:size=18:antialias=true, xft:WenQuanYi Micro Hei Mono:size=18:antialias=true, xft:SauceCodePro Nerd Font Mono:size=16:antialias=true, xft:Source Code Pro:size=16:antialias=true
 ! URxvt.font: xft:Source Code Pro:pixelsize=20:antialias=true, xft:SauceCodePro Nerd Font Mono:pixelsize=20:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:antialias=true, xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true
@@ -16,3 +18,11 @@ URxvt.saveLines: 20000
 ! *.foreground: #abaeb3
 URxvt*depth:32
 URxvt*dynamicColors:on
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hitslight
+Xft.hinting: 1
+Xft.antialias: 1
+xft.rgba: rgb
+xft.dpi: 96

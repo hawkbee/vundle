@@ -4,3 +4,4 @@
 (package! evil-matchit)
 (package! zig-mode)
 (package! po-mode)
+(package! bison-mode)

@@ -71,7 +71,7 @@ fi
 cd
 mkdir -p .backups
 
-F="bash_profile ctags gitconfig globalrc hgrc quiltrc spacemacs tern-config tmux.conf Xresources zshenv zshrc"
+F="bash_profile ctags gitconfig globalrc hgrc quiltrc tern-config tmux.conf Xresources zshenv zshrc"
 for f in $F
 do
   if [ -f .$f ]; then

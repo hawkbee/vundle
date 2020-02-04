@@ -1,5 +1,4 @@
 ;;; ~/.config/doom/config.el -*- lexical-binding: t; -*-
-
 (setq-default
  ;; doom-font (font-spec :family "WenQuanYi Zen Hei Mono" :size 20)
  ;; doom-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
