@@ -1,0 +1,23 @@
+#!/bin/sh
+# The Sway configuration file in ~/.config/sway/config calls this script.
+# You should see changes to the status bar after saving this script.
+# If not, do "killall swaybar" and $mod+Shift+c to reload the configuration.
+
+# Produces "21 days", for example
+uptime_formatted=$(uptime | awk '{print $3,$8}' | cut -d ',' -f1,2)
+
+# The abbreviated weekday (e.g., "Sat"), followed by the ISO-formatted date
+# like 2018-10-06 and the time (e.g., 14:01)
+date_formatted=$(date +"%Y-%m-%d %l:%M:%S %p")
+
+# Get the Linux version but remove the "-1-ARCH" part
+linux_version=$(uname -n -r | cut -d '-' -f1,2)
+
+# Returns the battery status: "Full", "Discharging", or "Charging".
+# battery_status=$(cat /sys/class/power_supply/BAT0/status)
+wireless_essid=$(iwconfig wlp1s0 | grep ESSID | cut -d'"' -f2)
+wireless_rate=$(iwconfig wlp1s0 | grep -E -o "Bit Rate=[0-9\.]+\s+[a-zA-Z\/]*" | cut -d= -f2)
+
+# Emojis and characters for the status bar
+# ⚡\|
+echo "$uptime_formatted ↑ $linux_version ↑ $wireless_essid⚡$wireless_rate ↑ $date_formatted"
