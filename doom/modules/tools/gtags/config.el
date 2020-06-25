@@ -15,6 +15,12 @@
   (with-eval-after-load 'evil-maps
     (define-key evil-motion-state-map (kbd "C-]") 'counsel-gtags-dwim)
     (define-key evil-motion-state-map (kbd "C-o") 'counsel-gtags-go-backward))
+  (map! :leader
+        :after cc-mode
+        :map counsel-gtags-mode-map
+        (:prefix-map ("c" . "code")
+         :desc "gtags reference" "G" #'counsel-gtags-find-reference
+         :desc "gtags dwim" "g" #'counsel-gtags-dwim))
   (set-lookup-handlers! '(c-mode c++-mode)
     ;; :definition #'counsel-gtags-dwim
     :definition #'counsel-gtags-dwim
@@ -27,11 +33,16 @@
   :init
   (add-hook 'c-mode-common-hook 'helm-gtags-mode)
   :config
+  (map! :localleader
+        :after cc-mode
+        :map helm-gtags-mode-map
+        :n :desc "gtags reference" "cs" #'helm-gtags-find-reference
+        :n :desc "gtags dwim" "cg" #'helm-gtags-dwim)
   (set-lookup-handlers! '(c-mode c++-mode)
     ;; :definition #'helm-gtags-dwim
     :definition #'helm-gtags-find-definition
     :documentation #'+default/man-or-woman
-    :references #'counsel-gtags-find-reference))
+    :references #'helm-gtags-find-reference))
 
 (add-hook! 'c-mode-common-hook
   (set-company-backend! 'c-mode

@@ -11,3 +11,4 @@ export ZLS_COLORS=${LS_COLORS}
 export GOPATH=~/go
 export RUST_SRC_PATH=~/rust/rust/src
 #export GOPATH=~/go:~/cloud/rcloud/goClient
+export BAT_THEME="Solarized (light)"

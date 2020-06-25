@@ -40,6 +40,7 @@ exec swayidle -w \
 	 timeout 300 'swaylock -f -c 000000' \
 	 timeout 300 'swaymsg "output * dpms off"' \
 	      resume 'swaymsg "output * dpms on"' \
+	 timeout 360 'systemctl suspend' \
 	 before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -218,8 +219,8 @@ bar {
         # background #5e227f
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
-    # font pango:Dejavu Sans Mono 14
-    font pango:Consolas 16
+    # font pango:DejaVu Sans Mono 14
+    font pango:Consolas 14
     # font pango:Inconsolata 12
     # font pango:Monospace 16
 }

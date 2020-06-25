@@ -352,9 +352,9 @@ nnoremap <Leader><Space> :LeaderfFile<CR>
 nnoremap H 0
 nnoremap L $
 set t_Co=256
-silent! colorscheme onedark
+" silent! colorscheme onedark
 " silent! colorscheme gruvbox
-" silent! colorscheme wombat256mod
+silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
 " silent! colorscheme molokai

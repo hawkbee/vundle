@@ -1,12 +1,12 @@
 ! #include ".vim/solarized.dark"
-#include ".vim/solarized.light"
+! #include ".vim/solarized.light"
 ! #include ".vim/raven.dark"
-! #include ".vim/dracula.dark"
+#include ".vim/dracula.dark"
 
-URxvt.font: xft:Consolas:size=18:antialias=true, xft:WenQuanYi Micro Hei Mono:size=18:antialias=true, xft:SauceCodePro Nerd Font Mono:size=16:antialias=true, xft:Source Code Pro:size=16:antialias=true
+URxvt.font:  xft:Consolas:size=18:antialias=true, xft:WenQuanYi Micro Hei Mono:size=18:antialias=true, xft:SauceCodePro Nerd Font Mono:size=16:antialias=true,xft:Bitstream Vera Sans Mono:size=16:antialias=true, xft:DejaVu Sans Mono:size=16:antialias=true, xft:Source Code Pro:size=16:antialias=true,
 ! URxvt.font: xft:Source Code Pro:pixelsize=20:antialias=true, xft:SauceCodePro Nerd Font Mono:pixelsize=20:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:antialias=true, xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true
 ! URxvt.font: xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true, xft:TerminessTTF Nerd Font Mono:pixelsize=16:antialias=true
-URxvt.boldFont: xft:Consolas:size=18:Bold:antialias=true, xft:WenQuanYi Micro Hei Mono:size=18:Bold:antialias=true, xft:TerminessTTF Nerd Font Mono:size=16:Bold:antialias=true
+URxvt.boldFont:  xft:Consolas:size=18:Bold:antialias=true, xft:WenQuanYi Micro Hei Mono:size=18:Bold:antialias=true, xft:SauceCodePro Nerd Font Mono:size=16:Bold:antialias=true, xft:Bitstream Vera Sans Mono:size=16:Bold:antialias=true, xft:DejaVu Sans Mono:size=16:Bold:antialias=true
 
 URxvt.letterspace: -1
 URxvt.intensityStyles: false
