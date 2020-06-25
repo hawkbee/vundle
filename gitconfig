@@ -1,8 +1,10 @@
 [user]
-	email = hawkbee@gmail.com
+	email = hawkbee@qq.com
 	name = Qun He
 [color]
 	ui = true
+[advice]
+	detachedHead = false
 [alias]
 	su = status -s -uno
 	st = status

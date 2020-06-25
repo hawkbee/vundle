@@ -60,3 +60,5 @@ proxyon() {
   export http_proxy=http://172.16.1.1:8118
   export https_proxy=http://172.16.1.1:8118
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

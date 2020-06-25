@@ -23,6 +23,10 @@
     ;; ("-i" "%d" tab-width)
     "--stdin")))
 
+(after! plantuml-mode
+  (setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar"
+        org-plantuml-jar-path plantuml-jar-path))
+
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (add-to-list 'auto-mode-alist '("\\.wpy\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
