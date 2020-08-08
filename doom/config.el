@@ -2,9 +2,10 @@
 (setq-default
  ;; doom-font (font-spec :family "WenQuanYi Zen Hei Mono" :size 20)
  ;; doom-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
- doom-serif-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
+ ;; doom-serif-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
  ;; doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 22)
  doom-font (font-spec :family "Consolas" :size 24)
+ doom-serif-font (font-spec :family "AR PL UKai CN" :size 18)
  ;; doom-font (font-spec :family "Noto Sans Mono Light" :size 18)
  +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode markdown-mode gfm-mode) ; elisp's mechanisms are good enough
  +pretty-code-enabled-modes '(emacs-lisp-mode org-mode)
