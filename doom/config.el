@@ -1,13 +1,17 @@
 ;;; ~/.config/doom/config.el -*- lexical-binding: t; -*-
 (setq-default
  ;; doom-font (font-spec :family "WenQuanYi Zen Hei Mono" :size 20)
- ;; doom-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
+ ;; doom-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 22)
  ;; doom-serif-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 20)
- ;; doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 22)
- doom-font (font-spec :family "Consolas" :size 24)
- doom-serif-font (font-spec :family "AR PL UKai CN" :size 18)
+ ;; doom-font (font-spec :family "Consolas" :size 24)
+ doom-font (font-spec :family "Consolas Ligaturized" :size 24)
+ ;; doom-font (font-spec :family "Droid Sans Mono" :size 22)
+ ;; doom-font (font-spec :family "Fira Code" :size 22)
+ ;; doom-font (font-spec :family "Anonymous Pro" :size 22)
+ ;; doom-font (font-spec :family "Fantasque Sans Mono" :size 22)
+ ;; doom-font (font-spec :family "AR PL UKai CN" :size 24)
  ;; doom-font (font-spec :family "Noto Sans Mono Light" :size 18)
- +format-on-save-enabled-modes '(not emacs-lisp-mode sql-mode markdown-mode gfm-mode) ; elisp's mechanisms are good enough
+ +format-on-save-enabled-modes '(not c-mode emacs-lisp-mode sql-mode markdown-mode gfm-mode) ; elisp's mechanisms are good enough
  +pretty-code-enabled-modes '(emacs-lisp-mode org-mode)
  package-archives
  (let ((proto (if gnutls-verify-error "https" "http")))

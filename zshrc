@@ -38,7 +38,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colored-man-pages git git-extras gitignore nvm emacs httpie autojump)
+plugins=(colored-man-pages git git-extras gitignore nvm z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -57,8 +57,8 @@ fi
 # [ "${TERM/rxvt}" != "${TERM}" ] && export BAT_THEME="Monokai Extended Light" && alias ssh="TERM=xterm-256color ssh"
 [ "${TERM/rxvt}" != "${TERM}" ] && alias ssh="TERM=xterm-256color ssh"
 proxyon() {
-  export http_proxy=http://172.16.1.1:8118
-  export https_proxy=http://172.16.1.1:8118
+  export http_proxy=socks5://127.0.0.1:1080
+  export https_proxy=socks5://127.0.0.1:1080
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

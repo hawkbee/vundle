@@ -8,7 +8,7 @@
 [alias]
 	su = status -s -uno
 	st = status
-	ci = commit -s
+	ci = commit
 	co = checkout
 	br = branch
 	dt = difftool
@@ -21,9 +21,9 @@
 	tool = vimdiff
 	algorithm = histogram
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.vim/gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	# pager = diff-so-fancy | less --tabs=4 -RFX
 [bash-it]
 	hide-status = 1
 [oh-my-zsh]

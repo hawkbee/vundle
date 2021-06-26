@@ -2,6 +2,7 @@
 (package! ztree)
 (package! vdiff)
 (package! evil-matchit)
-(package! zig-mode)
+;; (package! zig-mode)
 (package! po-mode)
 (package! bison-mode)
+(package! protobuf-mode)

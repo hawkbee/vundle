@@ -1,14 +1,14 @@
-export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH
-export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
-export PATH=$HOME/.yarn/bin:$HOME/.luarocks/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.config/composer/vendor/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.linuxbrew/bin:$PATH
-export MANPATH=/usr/local/opt/coreutils/libexec/gnubin:$MANPATH
+# export PATH=$HOME/go/bin:$PATH
 # export TERM="xterm-256color"
 # export TERM="rxvt-256color"
+export EDITOR=/usr/bin/vim
 export LANG=zh_CN.UTF-8
-export ZLS_COLORS=${LS_COLORS}
+# export ZLS_COLORS=${LS_COLORS}
 # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2
 # export WORKON_HOME=~/.virtualenvs
-export GOPATH=~/go
-export RUST_SRC_PATH=~/rust/rust/src
-#export GOPATH=~/go:~/cloud/rcloud/goClient
-export BAT_THEME="Solarized (light)"
+# export GOPATH=~/go
+# export RUST_SRC_PATH=~/rust/rust/src
+# export GOPATH=~/go
+# export BAT_THEME="Solarized (light)"
+# OneHalfLight/GitHub
+export BAT_THEME="Solarized (dark)"

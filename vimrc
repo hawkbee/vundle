@@ -8,8 +8,8 @@ let g:flow#enable = 0
 
 let g:has_async = v:version >= 800 || has('nvim')
 " let g:python_host_prog = $HOME . '/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = $HOME . '/.virtualenvs/neovim/bin/python'
-let $RUST_SRC_PATH = $HOME . '/cloud/devel/rust/src'
+" let g:python3_host_prog = $HOME . '/.virtualenvs/neovim/bin/python'
+" let $RUST_SRC_PATH = $HOME . '/cloud/devel/rust/src'
 
 source ~/.vim/plugrc
 
@@ -18,7 +18,7 @@ source ~/.vim/vimrc.default
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
-" let g:polyglot_disabled = ['javascript', 'jsx']
+let g:polyglot_disabled = ['javascript', 'jsx', 'markdown']
 
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "context"
@@ -37,8 +37,8 @@ let g:Lf_CommandMap = {'<ESC>': ['<ESC>', '<C-G>']}
 Plug 'mileszs/ack.vim'
 
 if g:has_async
-  " Plug 'w0rp/ale'
-  Plug 'neomake/neomake'
+  Plug 'w0rp/ale'
+  " Plug 'neomake/neomake'
 
   " let linter = neomake#makers#ft#c#clang()
   " function linter.fn(jobinfo) abort
@@ -50,21 +50,21 @@ if g:has_async
   " endfunction
   " let g:neomake_c_clang_maker_args = linter
 else
-  Plug 'scrooloose/syntastic'
+  " Plug 'scrooloose/syntastic'
 endif
 
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" end
-" Plug 'Shougo/neco-syntax'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+end
+Plug 'Shougo/neco-syntax'
 " Plug 'Shougo/deoplete-clangx'
 " Plug 'zchee/deoplete-jedi'
 " Plug 'ozelentok/deoplete-gtags'
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 " Plug 'ncm2/ncm2'
 " Plug 'roxma/nvim-yarp'
@@ -207,6 +207,7 @@ if executable('ranger')
 endif
 map <leader>op :NERDTree<CR>
 
+" Plug 'mcchrish/nnn.vim'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-scripts/peaksea'
@@ -240,11 +241,13 @@ let g:rooter_silent_chdir = 1
 " let g:rustfmt_autosave = 1
 " Plug 'racer-rust/vim-racer', {'for': 'rust'}
 " autocmd FileType rust nmap gd <Plug>(rust-def)
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 " Plug 'tpope/vim-speeddating', {'for': ['markdown', 'vimwiki']}
 " Plug 'jceb/vim-orgmode', {'for': 'org'}
 " Plug 'vimwiki/vimwiki', {'for': 'vimwiki'}
 " let g:vimwiki_dir_link = 'index'
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Plug 'fatih/vim-go', { 'for': 'go' }
 " let g:go_fmt_command = "goimports"
@@ -303,15 +306,15 @@ set fillchars="fold: "
 call plug#end()
 
 " let g:neomake_logfile = '/tmp/neomake.log'
-let g:neomake_c_enabled_makers = ['clang']
+" let g:neomake_c_enabled_makers = ['clang']
 " let g:neomake_open_list = 2
-call neomake#configure#automake('w')
-function! CustomNeomakeC(jobinfo) abort dict
-  if filereadable('.clang_complete') && self.exe == "clang"
-    let self.args += split(join(readfile('.clang_complete'), "\n"))
-  endif
-endfunction
-call neomake#config#set('ft.c.InitForJob', function('CustomNeomakeC'))
+" call neomake#configure#automake('w')
+" function! CustomNeomakeC(jobinfo) abort dict
+ "  if filereadable('.clang_complete') && self.exe == "clang"
+  "   let self.args += split(join(readfile('.clang_complete'), "\n"))
+ "  endif
+" endfunction
+" call neomake#config#set('ft.c.InitForJob', function('CustomNeomakeC'))
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -352,14 +355,14 @@ nnoremap <Leader><Space> :LeaderfFile<CR>
 nnoremap H 0
 nnoremap L $
 set t_Co=256
-" silent! colorscheme onedark
+set background=dark
+silent! colorscheme onedark
 " silent! colorscheme gruvbox
-silent! colorscheme wombat256mod
+" silent! colorscheme wombat256mod
 " silent! colorscheme solarized
 " silent! colorscheme peaksea
 " silent! colorscheme molokai
 " colorscheme dracula
-set background=dark
 set wildmenu
 set encoding=utf-8
 set termencoding=utf-8
